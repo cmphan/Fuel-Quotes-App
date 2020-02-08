@@ -1,0 +1,14 @@
+nav {
+    background-color: black;
+}
+/*NNP logo on navbar */
+#NNP_logo {
+    width: 100px;
+    height: 50px;
+    mix-blend-mode: hard-light;
+}
+/* login_register component on navbar */
+#log_in_register{
+    padding-left: 15px;
+
+}

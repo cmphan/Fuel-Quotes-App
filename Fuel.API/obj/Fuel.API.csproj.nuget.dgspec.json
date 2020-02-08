@@ -1,0 +1,64 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/cuongphan/Desktop/Spring 2020/COSC4353/Fuel-Quotes-App/Fuel-Quotes-App-Code/Fuel.API/Fuel.API.csproj": {}
+  },
+  "projects": {
+    "/Users/cuongphan/Desktop/Spring 2020/COSC4353/Fuel-Quotes-App/Fuel-Quotes-App-Code/Fuel.API/Fuel.API.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/cuongphan/Desktop/Spring 2020/COSC4353/Fuel-Quotes-App/Fuel-Quotes-App-Code/Fuel.API/Fuel.API.csproj",
+        "projectName": "Fuel.API",
+        "projectPath": "/Users/cuongphan/Desktop/Spring 2020/COSC4353/Fuel-Quotes-App/Fuel-Quotes-App-Code/Fuel.API/Fuel.API.csproj",
+        "packagesPath": "/Users/cuongphan/.nuget/packages/",
+        "outputPath": "/Users/cuongphan/Desktop/Spring 2020/COSC4353/Fuel-Quotes-App/Fuel-Quotes-App-Code/Fuel.API/obj/",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "/Users/cuongphan/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.0": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.0.102/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

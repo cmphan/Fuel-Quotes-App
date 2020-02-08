@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand" href="#"><img id="NNP_logo" src="assets/images/NNP_LOGO.png" alt="NNP logo"></a>
+    <button class="navbar-toggler" type="button" (click)="toggleNavbar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" [ngClass]="{ 'show': navbarOpen }">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item px-5">
+              <a class="nav-link m-2 menu-item" href="#top">Home</a>
+            </li>
+            <li class="nav-item px-5">
+              <a class="nav-link m-2 menu-item" href="#about">About Us</a>
+            </li>
+            <li class="nav-item px-5">
+              <a class="nav-link m-2 menu-item" href="#projects">Login</a>
+            </li>
+            <li class="nav-item px-5">
+              <a class="nav-link m-2 menu-item" href="#gallery">Register</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item px-5">
+                <a class="nav-link m-2 menu-item" href="#contact">Contact Us</a>
+              </li>
+            <li class="nav-item px-5">
+              <a href="#"><i class="nav-link icon-header navbar-brand fa fa-phone-square fa-2x"></i></a>
+              <a href="#"><i class="nav-link icon-header navbar-brand fa fa-facebook fa-2x"></i></a>
+              <a href="#"><i class="nav-link icon-header navbar-brand fa fa-twitter-square fa-2x"></i></a>
+              <a href="#"><i class="nav-link icon-header navbar-brand fa fa-linkedin fa-2x"></i></a>
+            </li>
+          </ul>
+    </div>
+  </nav>
