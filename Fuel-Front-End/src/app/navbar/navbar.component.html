@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-dark">
-    <a class="navbar-brand" href="#"><img id="NNP_logo" src="assets/images/NNP_LOGO.png" alt="NNP logo"></a>
+<nav class="navbar navbar-non-drop navbar-expand-lg navbar-dark" [ngClass]="{'navbar-drop': navbarOpen}">
+    <a id ="navbar_NNP_brand" class="navbar-brand" href="#">NNP</a>
     <button class="navbar-toggler" type="button" (click)="toggleNavbar()">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -19,10 +19,10 @@
             </li>
           </ul>
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item px-5">
+            <li class="nav-item px-5 py-2">
                 <a class="nav-link m-2 menu-item" href="#contact">Contact Us</a>
               </li>
-            <li class="nav-item px-5">
+            <li class="nav-item px-5 py-3">
               <a href="#"><i class="nav-link icon-header navbar-brand fa fa-phone-square fa-2x"></i></a>
               <a href="#"><i class="nav-link icon-header navbar-brand fa fa-facebook fa-2x"></i></a>
               <a href="#"><i class="nav-link icon-header navbar-brand fa fa-twitter-square fa-2x"></i></a>

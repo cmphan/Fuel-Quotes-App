@@ -10,7 +10,8 @@
     background-size: cover;
 }
 .hero-heading-text {
-    padding-top: 50px;
+    font-size: 2.5em;
+    padding-top: 20px;
     line-height: 2em;
 }
 /*glow effect on NNP
@@ -50,14 +51,14 @@ color: #FFFFFF; */
 /*Learn more button */
 .learn_more_btn {
     color: white;
-    font-size: 25px;
+    font-size: 20px;
     background-color: black;
     opacity: 0.8;
-    margin: 100px;
+    margin: 20px;
 }
 /*Learn more button hover effects*/
 .learn_more_btn:hover, .learn_more_btn:active {
-    font-size: 30px;
+    font-size: 25px;
     opacity: 1;
 }
 
@@ -75,6 +76,6 @@ color: #FFFFFF; */
     color: white;
     font-weight: bold;
     background-color: rgba(0, 0, 0, 0.6);
-    font-size: 25px;
+    font-size: 20px;
     line-height: 2em;
 }
