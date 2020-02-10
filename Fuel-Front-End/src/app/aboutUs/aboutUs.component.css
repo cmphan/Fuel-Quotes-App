@@ -16,7 +16,20 @@
     mix-blend-mode: hard-light;
 }
 .NNP-para {
-    width: 60%;
+    width: 70%;
     background: rgba(0, 0, 0, 0.7);
     mix-blend-mode: hard-light;
+    padding: 20px;
+}
+/*horizontal line below about */
+.horizontal-line {
+    width: 100%;
+    color: white;
+}
+/* about -text */
+.about-text {
+    border-bottom: 2px solid white;
+    width: 15%;
+    font-weight: bold;
+    font-size: 20px;
 }

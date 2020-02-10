@@ -11,6 +11,7 @@ import { Why_us_sectionComponent } from './why_us_section/why_us_section.compone
 import { Fueling_innovation_sectionComponent } from './fueling_innovation_section/fueling_innovation_section.component';
 import { FooterComponent } from './footer/footer.component';
 import { AboutUsComponent } from './aboutUs/aboutUs.component';
+import { CardsComponent } from './cards/cards.component';
 
 @NgModule({
    declarations: [
@@ -22,7 +23,8 @@ import { AboutUsComponent } from './aboutUs/aboutUs.component';
       Why_us_sectionComponent,
       Fueling_innovation_sectionComponent,
       FooterComponent,
-      AboutUsComponent
+      AboutUsComponent,
+      CardsComponent
    ],
    imports: [
       BrowserModule,

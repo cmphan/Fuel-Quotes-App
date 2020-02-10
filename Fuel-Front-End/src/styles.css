@@ -2,8 +2,14 @@
 @import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 @import '../node_modules/font-awesome/css/font-awesome.min.css';
 /* Style the entire body of the website */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 body {
     height: 100%;
     width: 100%;
     font-family: 'Montserrat', sans-serif;
+    background-color: black;
 }
