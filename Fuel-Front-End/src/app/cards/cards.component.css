@@ -1,7 +1,7 @@
 .cards {
     width: 70%;
     background: rgba(0, 0, 0, 0.7);
-    padding: 20px;
+    padding: 10px;
 }
 .flip-card {
     background-color: transparent;
@@ -48,4 +48,11 @@
       border-radius: 50%;
       width: 70px;
       height: 70px;
+  }
+  /*Our team text */
+  #our_team_text {
+    border-bottom: 2px solid white;
+    width: 15%;
+    font-weight: bold;
+    font-size: 20px;
   }
