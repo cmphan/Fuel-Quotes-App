@@ -31,6 +31,7 @@ homePage() {
   if (this.isHome === false) {this.isHome = true; this.isLogin = false; this.isAbout = false; }
   this.Home.next(this.isHome);
   this.Collapsed.next(this.isLogin);
+  this.About.next(this.isAbout);
 }
 aboutPage() {
   if (this.isAbout === false) {this.isAbout = true; this.isHome = false; this.isLogin = false;}
