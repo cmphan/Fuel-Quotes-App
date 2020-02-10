@@ -120,6 +120,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "Fuel-Front-End"
+    }
+  },
+  "defaultProject": "Fuel-Front-End",
+  "cli": {
+    "analytics": "4a2e6c3b-6adc-4b0a-9ce8-136b86874975"
+  }
 }

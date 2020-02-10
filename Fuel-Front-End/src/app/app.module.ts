@@ -12,6 +12,9 @@ import { Fueling_innovation_sectionComponent } from './fueling_innovation_sectio
 import { FooterComponent } from './footer/footer.component';
 import { AboutUsComponent } from './aboutUs/aboutUs.component';
 import { CardsComponent } from './cards/cards.component';
+import { RegisterComponent } from './register/register.component';
+import { RegistrationComponent } from './registration/registration.component';
+import { RegistrationComponent } from './registration/registration.component';
 
 @NgModule({
    declarations: [
@@ -24,7 +27,10 @@ import { CardsComponent } from './cards/cards.component';
       Fueling_innovation_sectionComponent,
       FooterComponent,
       AboutUsComponent,
-      CardsComponent
+      CardsComponent,
+      RegisterComponent,
+      RegistrationComponent,
+      RegistrationComponent
    ],
    imports: [
       BrowserModule,
