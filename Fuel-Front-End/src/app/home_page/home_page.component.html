@@ -1,0 +1,9 @@
+<div class="hero-img container-fluild text-white text-center">
+<!-- If isCollapsed (login button not clicked) = false -> display welcome section , else 
+-> login button clicked -> display login page-->
+<app-hero_image *ngIf="isHome"></app-hero_image>
+<!--when login button on navigation bar is clicked => login page-->
+<app-login *ngIf="isCollapsed"></app-login>
+<!-- show about page if isAbout is true-->
+<app-aboutUs *ngIf="isAbout"></app-aboutUs>
+</div>

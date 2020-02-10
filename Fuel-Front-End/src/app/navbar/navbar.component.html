@@ -6,13 +6,13 @@
     <div class="collapse navbar-collapse" [ngClass]="{ 'show': navbarOpen }">
         <ul class="navbar-nav mx-auto">
             <li class="nav-item px-5">
-              <a class="nav-link m-2 menu-item" href="#top">Home</a>
+              <a (click)="homePage()"class="nav-link m-2 menu-item" href="#top">Home</a>
             </li>
             <li class="nav-item px-5">
-              <a class="nav-link m-2 menu-item" href="#about">About Us</a>
+              <a (click)="aboutPage()"class="nav-link m-2 menu-item" href="#about">About Us</a>
             </li>
             <li class="nav-item px-5">
-              <a class="nav-link m-2 menu-item" href="#projects">Login</a>
+              <a (click)="loginCollapsed()" class="nav-link m-2 menu-item" href="#projects">Login</a>
             </li>
             <li class="nav-item px-5">
               <a class="nav-link m-2 menu-item" href="#gallery">Register</a>

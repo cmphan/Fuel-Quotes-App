@@ -1,1 +1,3 @@
-.bg{background: url('/Fuel-Front-End/src/assets/images/oil_company_background.jpg') no-repeat; width: 100%; height: 100vh;}
+.bg{
+    background: url('/Fuel-Front-End/src/assets/images/oil_company_background.jpg') no-repeat; width: 100%; height: 100vh;
+}
