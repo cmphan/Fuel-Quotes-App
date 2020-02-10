@@ -12,10 +12,7 @@ import { Fueling_innovation_sectionComponent } from './fueling_innovation_sectio
 import { FooterComponent } from './footer/footer.component';
 import { AboutUsComponent } from './aboutUs/aboutUs.component';
 import { CardsComponent } from './cards/cards.component';
-import { RegisterComponent } from './register/register.component';
 import { RegistrationComponent } from './registration/registration.component';
-import { RegistrationComponent } from './registration/registration.component';
-
 @NgModule({
    declarations: [
       AppComponent,
@@ -28,8 +25,6 @@ import { RegistrationComponent } from './registration/registration.component';
       FooterComponent,
       AboutUsComponent,
       CardsComponent,
-      RegisterComponent,
-      RegistrationComponent,
       RegistrationComponent
    ],
    imports: [
