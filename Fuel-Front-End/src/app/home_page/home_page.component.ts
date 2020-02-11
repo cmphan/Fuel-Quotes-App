@@ -9,6 +9,7 @@ export class Home_pageComponent implements OnInit {
   isCollapsed: boolean;
   isHome: boolean;
   isAbout: boolean;
+  isRegister: boolean;
   constructor(private appsevice: LoginService) {
   }
   ngOnInit() {
@@ -20,6 +21,9 @@ export class Home_pageComponent implements OnInit {
     });
     this.appsevice.About.subscribe(c => {
       this.isAbout = c;
+    });
+    this.appsevice.Register.subscribe(c => {
+      this.isRegister = c;
     });
   }
 }

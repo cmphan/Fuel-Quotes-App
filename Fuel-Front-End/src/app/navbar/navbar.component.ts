@@ -9,6 +9,7 @@ import {LoginService} from '../login.service';
 export class NavbarComponent implements OnInit{
   isCollapsed: boolean;
   isAbout: boolean;
+  isRegister: boolean;
   navbarOpen = false;
   isHome: boolean;
   constructor(private appsevice: LoginService) {
@@ -23,6 +24,9 @@ export class NavbarComponent implements OnInit{
     this.appsevice.About.subscribe(c => {
       this.isAbout = c;
     });
+    this.appsevice.Register.subscribe(c => {
+      this.isRegister = c;
+    });
   }
   loginCollapsed() {
     this.appsevice.loginCollapsed();
@@ -35,5 +39,8 @@ export class NavbarComponent implements OnInit{
   }
   toggleNavbar() {
     this.navbarOpen = !this.navbarOpen;
+  }
+  registerPage() {
+    this.appsevice.registerPage();
   }
 }
