@@ -17,7 +17,7 @@
 }
 /*Navbar brand */
 #navbar_NNP_brand {
--webkit-animation:colorchange_glow 10s infinite alternate;
+    padding-top: 18px;
 }
 @-webkit-keyframes colorchange_glow {
     0% {

@@ -47,7 +47,7 @@ color: #FFFFFF; */
 }
 /*Learn more button hover effects*/
 .learn_more_btn:hover, .learn_more_btn:active {
-    font-size: 25px;
+    font-size: 20px;
     opacity: 1;
 }
 
