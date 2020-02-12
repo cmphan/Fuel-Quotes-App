@@ -1,0 +1,34 @@
+.contact-us-section {
+    width: 100%;
+    height: 100%;
+    /*linear-gradient background color to make it darker */
+    background: linear-gradient(rgba(0, 0, 0, 0.2)), url(/assets/images/oil_company_background.jpg);
+    /*Scale image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.contact-div-section {
+    width: 70%;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+}
+
+.contact-us-text {
+    font-size: 2.5em;
+    padding-top: 20px;
+    line-height: 2em;
+    letter-spacing: 6px;
+}
+/*Get in touch button */
+.get_in_touch_btn {
+    color: white;
+    font-size: 20px;
+    background-color: black;
+    opacity: 0.8;
+    margin: 20px;
+}
+/* Get in touch button effect */
+.get_in_touch_btn:hover, .get_in_touch_btn:active{
+    opacity: 1;
+}

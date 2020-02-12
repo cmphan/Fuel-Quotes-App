@@ -10,6 +10,7 @@ export class NavbarComponent implements OnInit{
   isCollapsed: boolean;
   isAbout: boolean;
   isRegister: boolean;
+  isContact: boolean;
   navbarOpen = false;
   isHome: boolean;
   constructor(private appsevice: LoginService) {
@@ -27,6 +28,9 @@ export class NavbarComponent implements OnInit{
     this.appsevice.Register.subscribe(c => {
       this.isRegister = c;
     });
+    this.appsevice.Contact.subscribe (c => {
+      this.isContact = c;
+    });
   }
   loginCollapsed() {
     this.appsevice.loginCollapsed();
@@ -42,5 +46,8 @@ export class NavbarComponent implements OnInit{
   }
   registerPage() {
     this.appsevice.registerPage();
+  }
+  contactPage() {
+    this.appsevice.contactPage();
   }
 }
