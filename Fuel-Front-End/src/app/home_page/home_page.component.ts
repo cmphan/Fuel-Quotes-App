@@ -11,6 +11,7 @@ export class Home_pageComponent implements OnInit {
   isAbout: boolean;
   isRegister: boolean;
   isContact: boolean;
+  isProfile: boolean;
   constructor(private appsevice: LoginService) {
   }
   ngOnInit() {
@@ -28,6 +29,9 @@ export class Home_pageComponent implements OnInit {
     });
     this.appsevice.Contact.subscribe(c => {
       this.isContact = c;
+    });
+    this.appsevice.Profile.subscribe(c => {
+      this.isProfile = c;
     });
   }
 }

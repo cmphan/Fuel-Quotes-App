@@ -13,6 +13,7 @@ export class NavbarComponent implements OnInit{
   isContact: boolean;
   navbarOpen = false;
   isHome: boolean;
+  isProfile: boolean;
   constructor(private appsevice: LoginService) {
   }
   ngOnInit() {
@@ -30,6 +31,9 @@ export class NavbarComponent implements OnInit{
     });
     this.appsevice.Contact.subscribe (c => {
       this.isContact = c;
+    });
+    this.appsevice.Profile.subscribe (c => {
+      this.isProfile = c;
     });
   }
   loginCollapsed() {
@@ -49,5 +53,8 @@ export class NavbarComponent implements OnInit{
   }
   contactPage() {
     this.appsevice.contactPage();
+  }
+  profilePage() {
+    this.appsevice.profilePage();
   }
 }
