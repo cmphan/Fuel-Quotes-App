@@ -15,6 +15,7 @@ import { CardsComponent } from './cards/cards.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { ContactUsComponent } from './contactUs/contactUs.component';
 import { ProfileComponent } from './profile/profile.component';
+import { QuotesPageComponent } from './quotesPage/quotesPage.component';
 @NgModule({
    declarations: [
       AppComponent,
@@ -29,7 +30,8 @@ import { ProfileComponent } from './profile/profile.component';
       CardsComponent,
       RegistrationComponent,
       ContactUsComponent,
-      ProfileComponent
+      ProfileComponent,
+      QuotesPageComponent
    ],
    imports: [
       BrowserModule,

@@ -14,6 +14,7 @@ export class NavbarComponent implements OnInit{
   navbarOpen = false;
   isHome: boolean;
   isProfile: boolean;
+  isQuote: boolean;
   constructor(private appsevice: LoginService) {
   }
   ngOnInit() {
@@ -34,6 +35,9 @@ export class NavbarComponent implements OnInit{
     });
     this.appsevice.Profile.subscribe (c => {
       this.isProfile = c;
+    });
+    this.appsevice.Quotes.subscribe(c => {
+      this.isQuote = c;
     });
   }
   loginCollapsed() {
@@ -56,5 +60,8 @@ export class NavbarComponent implements OnInit{
   }
   profilePage() {
     this.appsevice.profilePage();
+  }
+  quotePage () {
+    this.appsevice.QuotesPage();
   }
 }

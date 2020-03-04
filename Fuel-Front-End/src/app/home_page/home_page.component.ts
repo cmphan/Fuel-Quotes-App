@@ -12,6 +12,7 @@ export class Home_pageComponent implements OnInit {
   isRegister: boolean;
   isContact: boolean;
   isProfile: boolean;
+  isQuote: boolean;
   constructor(private appsevice: LoginService) {
   }
   ngOnInit() {
@@ -32,6 +33,9 @@ export class Home_pageComponent implements OnInit {
     });
     this.appsevice.Profile.subscribe(c => {
       this.isProfile = c;
+    });
+    this.appsevice.Quotes.subscribe(c => {
+      this.isQuote = c;
     });
   }
 }
