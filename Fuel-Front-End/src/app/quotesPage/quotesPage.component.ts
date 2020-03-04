@@ -12,4 +12,11 @@ export class QuotesPageComponent implements OnInit {
   ngOnInit() {
   }
 
+  public gallon:number;
+  public price:number = 3;
+  public total:number;
+
+  cal(){
+    this.total=this.gallon*this.price;
+  }
 }

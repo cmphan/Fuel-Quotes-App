@@ -16,6 +16,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { ContactUsComponent } from './contactUs/contactUs.component';
 import { ProfileComponent } from './profile/profile.component';
 import { QuotesPageComponent } from './quotesPage/quotesPage.component';
+import { FormsModule } from '@angular/forms'; 
 @NgModule({
    declarations: [
       AppComponent,
@@ -38,7 +39,8 @@ import { QuotesPageComponent } from './quotesPage/quotesPage.component';
       BsDropdownModule.forRoot(),
       CollapseModule.forRoot(),
       BrowserAnimationsModule,
-      CollapseModule
+      CollapseModule,
+      FormsModule
    ],
    providers: [],
    bootstrap: [
