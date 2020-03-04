@@ -1,14 +1,15 @@
 <div class="container pt-3">
     <div class="row my-3">
-        <div class="col-sm-10 text-center"><h1>Hi, Thuy Nguyen</h1>
+        <div class="col-sm-3"></div>
+        <div class="col-sm-9"><h1>Hi, Thuy Nguyen</h1>
         <h5 class="p-3">Please complete your profile before starting your first quote</h5></div>
-    	<div class="col-sm-2"><img style="border-radius: 50%; height: 70px; width: 70px;" src="assets/images/user_icon.jpeg"></div>
+    	<!-- <div class="col-sm-2"><img style="border-radius: 50%; height: 70px; width: 70px;" src="assets/images/user_icon.jpeg"></div> -->
     </div>
     <div class="row">
   		<div class="col-sm-3"><!--left col-->
       <div class="text-center">
         <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
-        <h6>Upload a different photo...</h6>
+        <h6>Upload photo.</h6>
         <input type="file" class="text-center center-block file-upload">
       </div><br>
           <div class="panel panel-default">
@@ -36,13 +37,9 @@
                   <form id="client_form" class="form" action="##" method="post">
                       <div class="form-group">
                           <div class="row">
-                          <div class="col-6">
-                              <label for="first_name"><h4>First name</h4></label>
-                              <input type="text" class="form-control" name="first_name" id="first_name" placeholder="First name" title="enter your first name if any.">
-                          </div>
-                          <div class="col-6">
-                            <label for="last_name"><h4>Last name</h4></label>
-                              <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Last name" title="enter your last name if any.">
+                          <div class="col-12">
+                              <label for="full_name"><h4>Full name</h4></label>
+                              <input type="text" class="form-control" name="full_name" id="full_name" placeholder="Enter your full name" title="enter your full name." maxlength="50" required>
                           </div>
                           </div>
                       </div>
@@ -50,7 +47,7 @@
                           <div class="row">
                           <div class="col-12">
                               <label for="phone"><h4>Address 1</h4></label>
-                              <input type="text" class="form-control" name="phone" id="phone" placeholder="Enter your address" title="enter your address.">
+                              <input type="text" class="form-control" name="phone" id="phone" placeholder="Enter your address" title="enter your address." maxlength="100" required>
                           </div>
                           </div>
                       </div>
@@ -59,7 +56,7 @@
                         <div class="row">
                         <div class="col-12">
                             <label for="phone"><h4>Address 2</h4></label>
-                            <input type="text" class="form-control" name="phone" id="phone" placeholder="Enter your second address (if any)" title="enter your address.">
+                            <input type="text" class="form-control" name="phone" id="phone" placeholder="Enter your second address (optional)" title="enter your address." maxlength="100">
                         </div>
                         </div>
                     </div>
@@ -67,11 +64,11 @@
                         <div class="row">
                         <div class="col-4">
                             <label for="first_name"><h4>City</h4></label>
-                            <input type="text" class="form-control" name="first_name" id="first_name" placeholder="City" title="enter your first name if any.">
+                            <input type="text" class="form-control" name="first_name" id="first_name" placeholder="City" title="enter your first name if any." maxlength="100" required>
                         </div>
                         <div class="col-4">
                             <label for="state"><h4>State</h4></label>
-                            <select style="height: 38px;" name="state" id="state">
+                            <select style="height: 38px;" name="state" id="state" required>
                                 <option value="" selected="selected">Select a State</option>
                                 <option value="AL">Alabama</option>
                                 <option value="AK">Alaska</option>
@@ -127,8 +124,8 @@
                               </select>
                         </div>
                         <div class="col-4">
-                            <label for="last_name"><h4>Zipcode</h4></label>
-                              <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Zipcode" title="enter your last name if any.">
+                            <label for="zipcode"><h4>Zipcode</h4></label>
+                              <input type="text" class="form-control" name="zipcode" id="zipcode" placeholder="Enter zipcode" title="enter your zipcode." maxlength="9" minlength="5" required>
                           </div>
                         </div>
                     </div>
@@ -141,155 +138,7 @@
                       </div>
               	</form>
               
-              <hr>
-              
-             </div><!--/tab-pane-->
-             <div class="tab-pane" id="messages">
-               
-               <h2></h2>
-               
-               <hr>
-                  <form class="form" action="##" method="post" id="registrationForm">
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                              <label for="first_name"><h4>First name</h4></label>
-                              <input type="text" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any.">
-                          </div>
-                      </div>
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                            <label for="last_name"><h4>Last name</h4></label>
-                              <input type="text" class="form-control" name="last_name" id="last_name" placeholder="last name" title="enter your last name if any.">
-                          </div>
-                      </div>
-          
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                              <label for="phone"><h4>Phone</h4></label>
-                              <input type="text" class="form-control" name="phone" id="phone" placeholder="enter phone" title="enter your phone number if any.">
-                          </div>
-                      </div>
-          
-                      <div class="form-group">
-                          <div class="col-xs-6">
-                             <label for="mobile"><h4>Mobile</h4></label>
-                              <input type="text" class="form-control" name="mobile" id="mobile" placeholder="enter mobile number" title="enter your mobile number if any.">
-                          </div>
-                      </div>
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                              <label for="email"><h4>Email</h4></label>
-                              <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com" title="enter your email.">
-                          </div>
-                      </div>
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                              <label for="email"><h4>Location</h4></label>
-                              <input type="email" class="form-control" id="location" placeholder="somewhere" title="enter a location">
-                          </div>
-                      </div>
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                              <label for="password"><h4>Password</h4></label>
-                              <input type="password" class="form-control" name="password" id="password" placeholder="password" title="enter your password.">
-                          </div>
-                      </div>
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                            <label for="password2"><h4>Verify</h4></label>
-                              <input type="password" class="form-control" name="password2" id="password2" placeholder="password2" title="enter your password2.">
-                          </div>
-                      </div>
-                      <div class="form-group">
-                           <div class="col-xs-12">
-                                <br>
-                              	<button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
-                               	<button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
-                            </div>
-                      </div>
-              	</form>
-               
-             </div><!--/tab-pane-->
-             <div class="tab-pane" id="settings">
-                  <hr>
-                  <form class="form" action="##" method="post" id="registrationForm">
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                              <label for="first_name"><h4>First name</h4></label>
-                              <input type="text" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any.">
-                          </div>
-                      </div>
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                            <label for="last_name"><h4>Last name</h4></label>
-                              <input type="text" class="form-control" name="last_name" id="last_name" placeholder="last name" title="enter your last name if any.">
-                          </div>
-                      </div>
-          
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                              <label for="phone"><h4>Phone</h4></label>
-                              <input type="text" class="form-control" name="phone" id="phone" placeholder="enter phone" title="enter your phone number if any.">
-                          </div>
-                      </div>
-          
-                      <div class="form-group">
-                          <div class="col-xs-6">
-                             <label for="mobile"><h4>Mobile</h4></label>
-                              <input type="text" class="form-control" name="mobile" id="mobile" placeholder="enter mobile number" title="enter your mobile number if any.">
-                          </div>
-                      </div>
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                              <label for="email"><h4>Email</h4></label>
-                              <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com" title="enter your email.">
-                          </div>
-                      </div>
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                              <label for="email"><h4>Location</h4></label>
-                              <input type="email" class="form-control" id="location" placeholder="somewhere" title="enter a location">
-                          </div>
-                      </div>
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                              <label for="password"><h4>Password</h4></label>
-                              <input type="password" class="form-control" name="password" id="password" placeholder="password" title="enter your password.">
-                          </div>
-                      </div>
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                            <label for="password2"><h4>Verify</h4></label>
-                              <input type="password" class="form-control" name="password2" id="password2" placeholder="password2" title="enter your password2.">
-                          </div>
-                      </div>
-                      <div class="form-group">
-                           <div class="col-xs-12">
-                                <br>
-                              	<button class="btn btn-lg btn-success pull-right" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
-                               	<!--<button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>-->
-                            </div>
-                      </div>
-              	</form>
-              </div>
-               
-              </div><!--/tab-pane-->
-          </div><!--/tab-content-->
-
+            
         </div><!--/col-9-->
     </div><!--/row-->
                                                       
