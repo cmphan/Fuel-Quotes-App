@@ -64,4 +64,5 @@ export class NavbarComponent implements OnInit{
   quotePage () {
     this.appsevice.QuotesPage();
   }
+
 }

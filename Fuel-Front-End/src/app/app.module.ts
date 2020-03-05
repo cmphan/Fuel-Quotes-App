@@ -17,6 +17,12 @@ import { ContactUsComponent } from './contactUs/contactUs.component';
 import { ProfileComponent } from './profile/profile.component';
 import { QuotesPageComponent } from './quotesPage/quotesPage.component';
 import { FormsModule } from '@angular/forms'; 
+import { HistoryComponent } from './history/history.component';
+import { Routes, RouterModule } from '@angular/router'
+
+const appRoutes: Routes =[
+   {path:'history', component: HistoryComponent}
+];
 @NgModule({
    declarations: [
       AppComponent,
@@ -32,7 +38,8 @@ import { FormsModule } from '@angular/forms';
       RegistrationComponent,
       ContactUsComponent,
       ProfileComponent,
-      QuotesPageComponent
+      QuotesPageComponent,
+      HistoryComponent
    ],
    imports: [
       BrowserModule,
@@ -40,7 +47,8 @@ import { FormsModule } from '@angular/forms';
       CollapseModule.forRoot(),
       BrowserAnimationsModule,
       CollapseModule,
-      FormsModule
+      FormsModule,
+      RouterModule.forRoot(appRoutes)
    ],
    providers: [],
    bootstrap: [
