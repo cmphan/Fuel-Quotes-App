@@ -2,28 +2,28 @@
     <a id ="navbar_NNP_brand" class="navbar-brand" href="#">
       <img src="/assets/images/NNP_LOGO.png" width="70" height="70">
     </a>
-    <button class="navbar-toggler" type="button" (click)="toggleNavbar()">
+    <button class="navbar-toggler" type="button">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" [ngClass]="{ 'show': navbarOpen }">
         <ul class="navbar-nav mx-auto">
             <li class="nav-item px-3 py-2">
-              <a (click)="homePage()"class="nav-link m-2 menu-item" href="#top">Home</a>
+              <a  routerLink="/home" class="nav-link m-2 menu-item" href="#top">Home</a>
             </li>
             <li class="nav-item px-3 py-2">
-              <a (click)="aboutPage()"class="nav-link m-2 menu-item" href="#about">About Us</a>
+              <a routerLink="/about" class="nav-link m-2 menu-item" href="#about">About Us</a>
             </li>
             <li class="nav-item px-3 py-2">
-              <a (click)="loginCollapsed()" class="nav-link m-2 menu-item" href="#projects">Login</a>
+              <a routerLink="/login" class="nav-link m-2 menu-item" href="#projects">Login</a>
             </li>
             <li class="nav-item px-3 py-2">
-              <a (click)="registerPage()"class="nav-link m-2 menu-item" href="#gallery">Register</a>
+              <a routerLink="/register" class="nav-link m-2 menu-item" href="#gallery">Register</a>
             </li>
             <li class="nav-item px-3 py-2">
-              <a (click)="quotePage()"class="nav-link m-2 menu-item" href="#profile">Quote</a>
+              <a routerLink="/quote" class="nav-link m-2 menu-item" href="#profile">Quote</a>
             </li>
             <li class="nav-item px-3 py-2">
-              <a (click)="contactPage()"class="nav-link m-2 menu-item" href="#contact">Contact Us</a>
+              <a routerLink="/contact" class="nav-link m-2 menu-item" href="#contact">Contact Us</a>
             </li>
           </ul>
           <ul class="navbar-nav ml-auto">
@@ -34,7 +34,7 @@
               <a href="#"><i class="nav-link icon-header navbar-brand fa fa-facebook fa-2x"></i></a>
               <a href="#"><i class="nav-link icon-header navbar-brand fa fa-twitter-square fa-2x"></i></a>
               <a href="#"><i class="nav-link icon-header navbar-brand fa fa-linkedin fa-2x"></i></a>
-              <a (click)="profilePage()" href="#"><img src="/assets/images/pro5.png" width="35" height="35"></a>
+              <a routerLink="/profile" href="#"><img src="/assets/images/pro5.png" width="35" height="35"></a>
             </li>
           </ul>
     </div>

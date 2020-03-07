@@ -8,3 +8,13 @@
     -moz-box-shadow: -1px 4px 20px 11px rgba(0,0,0,0.75);
     box-shadow: -1px 4px 20px 11px rgba(0,0,0,0.75);
 }
+.profile-img {
+    height: 100vh;
+    width: 100%;
+    /*linear-gradient background color to make it darker */
+    background: linear-gradient(rgba(0, 0, 0, 0.2)), url(/assets/images/home_background.jpeg);
+    /*Scale image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

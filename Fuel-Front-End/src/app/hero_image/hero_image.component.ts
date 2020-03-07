@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {LoginService} from '../login.service'; 
 @Component({
   selector: 'app-hero_image',
   templateUrl: './hero_image.component.html',

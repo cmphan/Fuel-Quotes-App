@@ -21,7 +21,14 @@ import { HistoryComponent } from './history/history.component';
 import { Routes, RouterModule } from '@angular/router'
 
 const appRoutes: Routes =[
-   {path:'history', component: HistoryComponent}
+   {path:'history', component: HistoryComponent},
+   {path:'contact', component: ContactUsComponent},
+   {path:'about', component:AboutUsComponent},
+   {path:'login', component:LoginComponent},
+   {path:'register', component:RegistrationComponent},
+   {path:'quote', component:QuotesPageComponent},
+   {path:'profile', component:ProfileComponent},
+   {path:'home', component:Home_pageComponent},
 ];
 @NgModule({
    declarations: [
