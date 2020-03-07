@@ -29,6 +29,8 @@ namespace Fuel.API
         {
             //Add services for Microsoft Entity Framework Data Migrations.
             services.AddDbContext<DataContext>(x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddCors();
+            services.AddScoped<IAuthRepository,AuthRepository>();
             services.AddControllers();
         }
 
@@ -44,6 +46,7 @@ namespace Fuel.API
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseCors(x=>x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
             app.UseEndpoints(endpoints =>
             {

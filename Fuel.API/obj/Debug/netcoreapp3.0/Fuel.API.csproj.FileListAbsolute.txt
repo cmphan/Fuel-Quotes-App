@@ -41,3 +41,8 @@
 /Users/cuongphan/Desktop/Spring 2020/COSC4353/Fuel-Quotes-App/Fuel-Quotes-App-Code/Fuel.API/bin/Debug/netcoreapp3.0/runtimes/win-arm64/native/e_sqlite3.dll
 /Users/cuongphan/Desktop/Spring 2020/COSC4353/Fuel-Quotes-App/Fuel-Quotes-App-Code/Fuel.API/bin/Debug/netcoreapp3.0/runtimes/win-x64/native/e_sqlite3.dll
 /Users/cuongphan/Desktop/Spring 2020/COSC4353/Fuel-Quotes-App/Fuel-Quotes-App-Code/Fuel.API/bin/Debug/netcoreapp3.0/runtimes/win-x86/native/e_sqlite3.dll
+/Users/cuongphan/Desktop/Spring 2020/COSC4353/Fuel-Quotes-App/Fuel-Quotes-App-Code/Fuel.API/bin/Debug/netcoreapp3.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/Users/cuongphan/Desktop/Spring 2020/COSC4353/Fuel-Quotes-App/Fuel-Quotes-App-Code/Fuel.API/bin/Debug/netcoreapp3.0/Microsoft.IdentityModel.Logging.dll
+/Users/cuongphan/Desktop/Spring 2020/COSC4353/Fuel-Quotes-App/Fuel-Quotes-App-Code/Fuel.API/bin/Debug/netcoreapp3.0/Microsoft.IdentityModel.Tokens.dll
+/Users/cuongphan/Desktop/Spring 2020/COSC4353/Fuel-Quotes-App/Fuel-Quotes-App-Code/Fuel.API/bin/Debug/netcoreapp3.0/Newtonsoft.Json.dll
+/Users/cuongphan/Desktop/Spring 2020/COSC4353/Fuel-Quotes-App/Fuel-Quotes-App-Code/Fuel.API/bin/Debug/netcoreapp3.0/System.IdentityModel.Tokens.Jwt.dll
