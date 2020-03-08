@@ -18,12 +18,18 @@ namespace Fuel.API.Data
         {
             //Fetch user object out of database based on username; 
             var user = await _context.Users.FirstOrDefaultAsync(x => x.Username == username);
+            Console.WriteLine("username validation");
             //If not user exists return null 
             if (user == null) return null;
+            Console.WriteLine(user.Username);
             //Verify password by comparing the input password with the hashed + salted parts of password from db
             if(!HashedPasswordValidation(password,user.PasswordHash,user.PasswordSalt))
             //If password validation fails => return null
+            {
+                Console.WriteLine("Password validation");
                 return null;
+            }
+            Console.WriteLine("User exists");
             //If queries executed successfully => return user object from database. 
             return user;
         }
@@ -62,8 +68,8 @@ namespace Fuel.API.Data
         {
             using(var hmac = new System.Security.Cryptography.HMACSHA512())
             {
-                hashedPassword = hmac.Key;
-                saltedPassword = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+                saltedPassword = hmac.Key;
+                hashedPassword = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
             }
         }
             //Function to check if user is already existed inside the database by username => keep each username unique
