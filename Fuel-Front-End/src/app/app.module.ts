@@ -55,7 +55,7 @@ const appRoutes: Routes =[
       BrowserAnimationsModule,
       CollapseModule,
       FormsModule,
-      RouterModule.forRoot(appRoutes)
+      RouterModule.forRoot(appRoutes),
    ],
    providers: [],
    bootstrap: [
