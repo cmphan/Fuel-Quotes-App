@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {AuthService} from '../_services/auth.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -7,12 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
   model: any = {};
-  constructor() { }
+  constructor(private authServices: AuthService) { }
 
   ngOnInit() {
   }
   login() {
-    console.log(this.model);
+    this.authServices.login(this.model).subscribe(next => {
+      console.log('login successfully');
+    }, error => {
+      console.log('Failed to login');
+    });
   }
 
 }

@@ -6,22 +6,22 @@
       <div class="col-md-4 col-sm-4 col-xs-12"></div>
       <div class="col-md-4 col-sm-4 col-xs-12">
         <!--form -->
-        <form class = "form-container">
+        <form #loginForm="ngForm" class = "form-container" (ngSubmit)="login()">
         <h1>Login</h1>
           <div class="form-group">
             <label for="exampleInputEmail1">Username</label>
-            <input type="text" name="username" class="form-control" id="exampleInputEmail1" placeholder="Username">
+            <input type="text" name="username" class="form-control" placeholder="Username" required [(ngModel)]="model.username">
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            <input type="password" name="password" class="form-control" placeholder="Password" required [(ngModel)]="model.password">
           </div>
           <div class="checkbox">
             <label>
               <input type="checkbox"> Remember me
             </label>
           </div>
-          <button type="submit" class="btn btn-info btn-block">Submit</button>
+          <button [disabled]="!loginForm.valid" type="submit" class="btn btn-info btn-block">Submit</button>
         </form>
         <!--form -->
       </div>

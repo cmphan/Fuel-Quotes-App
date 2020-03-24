@@ -18,7 +18,9 @@ import { ProfileComponent } from './profile/profile.component';
 import { QuotesPageComponent } from './quotesPage/quotesPage.component';
 import { FormsModule } from '@angular/forms'; 
 import { HistoryComponent } from './history/history.component';
-import { Routes, RouterModule } from '@angular/router'
+import { Routes, RouterModule } from '@angular/router';
+import { AuthService } from './_services/auth.service';
+import {HttpClientModule} from '@angular/common/http';
 
 const appRoutes: Routes =[
    {path:'history', component: HistoryComponent},
@@ -56,8 +58,11 @@ const appRoutes: Routes =[
       CollapseModule,
       FormsModule,
       RouterModule.forRoot(appRoutes),
+      HttpClientModule
    ],
-   providers: [],
+   providers: [
+      AuthService
+   ],
    bootstrap: [
       AppComponent
    ]
