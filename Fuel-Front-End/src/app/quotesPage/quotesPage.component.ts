@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {AuthService} from '../_services/auth.service';
 @Component({
   selector: 'app-quotesPage',
   templateUrl: './quotesPage.component.html',
@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QuotesPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(public authService: AuthService) { }
 
   ngOnInit() {
   }
@@ -17,6 +17,14 @@ export class QuotesPageComponent implements OnInit {
   public total:number;
 
   cal(){
-    this.total=this.gallon*this.price;
+    this.total = this.gallon * this.price;
   }
+  loggedIn() {
+    return this.authService.loggedIn();
+  }
+  logout() {
+    localStorage.removeItem('token');
+    console.log('logged out');
+  }
+
 }
