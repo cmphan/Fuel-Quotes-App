@@ -16,11 +16,12 @@ import { RegistrationComponent } from './registration/registration.component';
 import { ContactUsComponent } from './contactUs/contactUs.component';
 import { ProfileComponent } from './profile/profile.component';
 import { QuotesPageComponent } from './quotesPage/quotesPage.component';
-import { FormsModule } from '@angular/forms'; 
+import { ReactiveFormsModule, FormsModule } from '@angular/forms'; 
 import { HistoryComponent } from './history/history.component';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthService } from './_services/auth.service';
 import {HttpClientModule} from '@angular/common/http';
+import { AuthGuard } from './_guards/auth.guard';
 
 const appRoutes: Routes =[
    {path:'history', component: HistoryComponent},
@@ -28,9 +29,12 @@ const appRoutes: Routes =[
    {path:'about', component:AboutUsComponent},
    {path:'login', component:LoginComponent},
    {path:'register', component:RegistrationComponent},
-   {path:'quote', component:QuotesPageComponent},
+   {path:'quote', component:QuotesPageComponent, canActivate: [AuthGuard]},
    {path:'profile', component:ProfileComponent},
    {path:'home', component:Home_pageComponent},
+   {path: '',component:Home_pageComponent},
+   // Random route redirect to homepage
+   {path: '**', redirectTo: '',pathMatch: 'full'}, 
 ];
 @NgModule({
    declarations: [
@@ -56,6 +60,7 @@ const appRoutes: Routes =[
       CollapseModule.forRoot(),
       BrowserAnimationsModule,
       CollapseModule,
+      ReactiveFormsModule,
       FormsModule,
       RouterModule.forRoot(appRoutes),
       HttpClientModule

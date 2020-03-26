@@ -6,29 +6,38 @@
       <div class="col-md-4 col-sm-4 col-xs-12"></div>
       <div class="col-md-4 col-sm-4 col-xs-12">
         <!--form -->
-        <form class = "form-container">
+        <form [formGroup]="form" class = "form-container">
         <h1>Signup</h1>
           <div class="form-group">
             <label for="email-signup">Username</label>
-            <input type="text" class="form-control" id="email-signup" placeholder="Username">
+            <div class="py-1" style="font-size: 0.8em;" *ngIf="form.controls.username.invalid && form.controls.username.touched">
+              <i class="fa fa-times-circle" style="color: firebrick;"></i>
+              <span class="text-danger bg-light">Username should be minimum 5 characters long</span>
+            </div>
+            <input formControlName="username" type="text" class="form-control" name="username" placeholder="Username" required>
           </div>
-
           <div class="form-group">
             <label for="password-signup">Password</label>
-            <input type="password" class="form-control" id="password-signup" placeholder="Password">
+            <div class="py-1" style="font-size: 0.8em;" *ngIf="form.controls.password.invalid && form.controls.password.touched">
+              <i class="fa fa-times-circle" style="color: firebrick;"></i>
+              <span class="text-danger bg-light">Password should be minimum 8 characters long</span>
+            </div>
+            <input formControlName="password" type="password" class="form-control" id="password-signup" placeholder="Password" required>
           </div>
-
           <div class="form-group">
             <label for="password-confirm">Confirm password</label>
-            <input type="password" class="form-control" id="password-confirm" placeholder="Password">
+            <div class="py-1" style="font-size: 0.8em;" *ngIf="form.controls.cnfpass.invalid && form.controls.cnfpass.touched">
+              <i class="fa fa-times-circle" style="color: firebrick;"></i>
+              <span class="text-danger bg-light">Password and confirm password should be matched</span>
+            </div>
+            <input formControlName="cnfpass" type="password" class="form-control" id="password-confirm" placeholder="Password" required>
           </div>
-
           <div class="checkbox">
             <label>
               <input type="checkbox"> Remember me
             </label>
           </div>
-          <button type="submit" class="btn btn-info btn-block">Submit</button>
+          <button [disabled] ="form.invalid" type="submit" class="btn btn-info btn-block" (click)="onSubmit()">Submit</button>
         </form>
         <!--form -->
       </div>
