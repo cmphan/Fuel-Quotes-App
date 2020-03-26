@@ -10,14 +10,14 @@ export class AuthService {
 baseUrl = 'http://localhost:5000/api/auth/';
 jwtHelper = new JwtHelperService();
 decodedToken: any;
-
-constructor(private http: HttpClient) {}
+constructor(private http: HttpClient) {
+}
   login(model: any) {
     return this.http.post(this.baseUrl + 'login', model).
     pipe(
       map((response: any) => {
         const user = response;
-        // if user exists 
+        // if user exists
         if (user) {
           localStorage.setItem('token', user.token);
           this.decodedToken = this.jwtHelper.decodeToken(user.token);
@@ -33,5 +33,9 @@ constructor(private http: HttpClient) {}
     const token = localStorage.getItem('token');
     return !this.jwtHelper.isTokenExpired(token);
   }
-
+  registered(isRegistered: boolean)
+  {
+    console.log('registere in service is called');
+    return isRegistered;
+  }
 }

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {passValidator} from './validator';
 import { AuthService } from '../_services/auth.service';
+import { Router } from '@angular/router';
+import { AlertifyService } from '../_services/alertify.service';
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
@@ -9,12 +11,12 @@ import { AuthService } from '../_services/auth.service';
 })
 export class RegistrationComponent implements OnInit {
   model: any = {};
-  registerFailure : boolean;
-  registerSuccess : boolean;
+  registerFailure: boolean;
+  registerSuccess: boolean;
   form: FormGroup;
-  constructor(private fb: FormBuilder, private authService: AuthService) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router, private alertify: AlertifyService) {
     this.form = this.fb.group({
-      // Minimum length of 4 characters for username 
+      // Minimum length of 5 characters for username, and 8 characters for password
       username: ['', Validators.minLength(5)],
       password: ['', Validators.minLength(8)],
       cnfpass: ['', passValidator],
@@ -27,6 +29,8 @@ export class RegistrationComponent implements OnInit {
     this.authService.register(this.model).subscribe(() => {
       this.registerSuccess = true;
       this.registerFailure = false;
+      this.router.navigateByUrl('/profile');
+      this.alertify.success('Resigter successfully');
     }, error => {
       this.registerFailure = true;
       this.registerSuccess = false;
@@ -40,6 +44,7 @@ export class RegistrationComponent implements OnInit {
   }
   // Get username from the form
   ngOnInit() {
+
   }
 
 }
