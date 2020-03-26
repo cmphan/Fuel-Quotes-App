@@ -25,6 +25,9 @@ constructor(private http: HttpClient) {}
       })
     );
   }
+  register(model: any) {
+    return this.http.post(this.baseUrl + 'register', model);
+  }
   // check if token is expired
   loggedIn() {
     const token = localStorage.getItem('token');

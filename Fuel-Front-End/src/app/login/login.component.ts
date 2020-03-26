@@ -20,7 +20,6 @@ export class LoginComponent implements OnInit {
       this.alertify.success('login successfully');
     }, error => {
       this.wrongPassword = true;
-      console.log('Failed to login');
     });
   }
 

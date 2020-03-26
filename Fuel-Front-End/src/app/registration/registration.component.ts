@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {passValidator} from './validator';
+import { AuthService } from '../_services/auth.service';
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
@@ -8,8 +9,10 @@ import {passValidator} from './validator';
 })
 export class RegistrationComponent implements OnInit {
   model: any = {};
+  registerFailure : boolean;
+  registerSuccess : boolean;
   form: FormGroup;
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private authService: AuthService) {
     this.form = this.fb.group({
       // Minimum length of 4 characters for username 
       username: ['', Validators.minLength(5)],
@@ -20,8 +23,20 @@ export class RegistrationComponent implements OnInit {
     this.form.controls.password.valueChanges.subscribe(x => this.form.controls.cnfpass.updateValueAndValidity());
   }
 
-  onSubmit(){
-    console.log(this.form.value);
+  register() {
+    this.authService.register(this.model).subscribe(() => {
+      this.registerSuccess = true;
+      this.registerFailure = false;
+    }, error => {
+      this.registerFailure = true;
+      this.registerSuccess = false;
+    });
+  }
+
+  onSubmit() {
+    this.model.username = this.form.value.username;
+    this.model.password = this.form.value.password;
+    this.register();
   }
   // Get username from the form
   ngOnInit() {
