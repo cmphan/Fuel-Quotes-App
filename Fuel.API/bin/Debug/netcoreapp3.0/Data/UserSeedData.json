@@ -1,0 +1,189 @@
+[
+    {
+      "Username": "Duke",
+      "Password": "password",
+      "DateCreated": "2019-01-26",
+      "LastActive": "2019-01-26",
+      "ClientProfile": [
+        {
+          "Fullname": "Bradford Powers",
+          "PhotoURL": "https://randomuser.me/api/portraits/men/61.jpg",
+          "Address1": "222 Micieli Place",
+          "Address2": "797 Leonora Court",
+          "City": "Bowden",
+          "State": "Palau",
+          "ZipCode": 744444
+        }
+      ]
+    },
+    {
+      "Username": "Miranda",
+      "Password": "password",
+      "DateCreated": "2019-06-03",
+      "LastActive": "2019-06-03",
+      "ClientProfile": [
+        {
+          "Fullname": "Briggs Sullivan",
+          "PhotoURL": "https://randomuser.me/api/portraits/men/50.jpg",
+          "Address1": "215 Hopkins Street",
+          "Address2": "293 Seigel Street",
+          "City": "Collins",
+          "State": "West Virginia",
+          "ZipCode": 145346
+        }
+      ]
+    },
+    {
+      "Username": "Olson",
+      "Password": "password",
+      "DateCreated": "2019-08-31",
+      "LastActive": "2019-08-31",
+      "ClientProfile": [
+        {
+          "Fullname": "Kaufman Schmidt",
+          "PhotoURL": "https://randomuser.me/api/portraits/men/66.jpg",
+          "Address1": "654 Flatbush Avenue",
+          "Address2": "616 Jackson Street",
+          "City": "Draper",
+          "State": "Maryland",
+          "ZipCode": 261351
+        }
+      ]
+    },
+    {
+      "Username": "Reed",
+      "Password": "password",
+      "DateCreated": "2019-12-07",
+      "LastActive": "2019-12-07",
+      "ClientProfile": [
+        {
+          "Fullname": "Navarro Keller",
+          "PhotoURL": "https://randomuser.me/api/portraits/men/12.jpg",
+          "Address1": "957 Homecrest Court",
+          "Address2": "118 Radde Place",
+          "City": "Chestnut",
+          "State": "Pennsylvania",
+          "ZipCode": 738352
+        }
+      ]
+    },
+    {
+      "Username": "Knox",
+      "Password": "password",
+      "DateCreated": "2019-07-05",
+      "LastActive": "2019-07-05",
+      "ClientProfile": [
+        {
+          "Fullname": "Lloyd Ratliff",
+          "PhotoURL": "https://randomuser.me/api/portraits/men/39.jpg",
+          "Address1": "475 Havens Place",
+          "Address2": "867 Bank Street",
+          "City": "Waterford",
+          "State": "Massachusetts",
+          "ZipCode": 190361
+        }
+      ]
+    }, 
+    {
+        "Username": "Hunter",
+        "Password": "password",
+        "DateCreated": "2019-05-05",
+        "LastActive": "2019-05-05",
+        "ClientProfile": [
+          {
+            "Fullname": "Espinoza Ruiz",
+            "PhotoURL": "https://randomuser.me/api/portraits/men/70.jpg",
+            "Address1": "901 Cozine Avenue",
+            "Address2": "108 Dobbin Street",
+            "City": "Riceville",
+            "State": "Delaware",
+            "ZipCode": 395523
+          }
+        ]
+      },
+      {
+        "Username": "Coffey",
+        "Password": "password",
+        "DateCreated": "2019-05-10",
+        "LastActive": "2019-05-10",
+        "ClientProfile": [
+          {
+            "Fullname": "Stevens Howell",
+            "PhotoURL": "https://randomuser.me/api/portraits/men/4.jpg",
+            "Address1": "797 Nolans Lane",
+            "Address2": "445 Clifford Place",
+            "City": "Marne",
+            "State": "Massachusetts",
+            "ZipCode": 174697
+          }
+        ]
+      },
+      {
+        "Username": "Ware",
+        "Password": "password",
+        "DateCreated": "2019-06-05",
+        "LastActive": "2019-06-05",
+        "ClientProfile": [
+          {
+            "Fullname": "Wilson Clemons",
+            "PhotoURL": "https://randomuser.me/api/portraits/men/95.jpg",
+            "Address1": "133 Maple Street",
+            "Address2": "651 Love Lane",
+            "City": "Allentown",
+            "State": "Pennsylvania",
+            "ZipCode": 549864
+          }
+        ]
+      },
+      {
+        "Username": "Stokes",
+        "Password": "password",
+        "DateCreated": "2019-05-21",
+        "LastActive": "2019-05-21",
+        "ClientProfile": [
+          {
+            "Fullname": "Knight Edwards",
+            "PhotoURL": "https://randomuser.me/api/portraits/men/11.jpg",
+            "Address1": "605 Crosby Avenue",
+            "Address2": "151 Halleck Street",
+            "City": "Innsbrook",
+            "State": "Utah",
+            "ZipCode": 337735
+          }
+        ]
+      },
+      {
+        "Username": "Arnold",
+        "Password": "password",
+        "DateCreated": "2019-10-12",
+        "LastActive": "2019-10-12",
+        "ClientProfile": [
+          {
+            "Fullname": "Suarez Mcpherson",
+            "PhotoURL": "https://randomuser.me/api/portraits/men/95.jpg",
+            "Address1": "875 Wakeman Place",
+            "Address2": "331 Jerome Street",
+            "City": "Bodega",
+            "State": "New Jersey",
+            "ZipCode": 353322
+          }
+        ]
+      },
+      {
+        "Username": "Tate",
+        "Password": "password",
+        "DateCreated": "2019-06-02",
+        "LastActive": "2019-06-02",
+        "ClientProfile": [
+          {
+            "Fullname": "Clark Pollard",
+            "PhotoURL": "https://randomuser.me/api/portraits/men/40.jpg",
+            "Address1": "680 Ford Street",
+            "Address2": "599 Morton Street",
+            "City": "Volta",
+            "State": "Oklahoma",
+            "ZipCode": 981461
+          }
+        ]
+      }
+  ]

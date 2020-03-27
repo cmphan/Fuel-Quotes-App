@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Fuel.API.Migrations
 {
-    public partial class profileUpdated : Migration
+    public partial class ProfileTableCreateds : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -16,7 +16,7 @@ namespace Fuel.API.Migrations
                     Username = table.Column<string>(nullable: true),
                     PasswordHash = table.Column<byte[]>(nullable: true),
                     PasswordSalt = table.Column<byte[]>(nullable: true),
-                    LastLogin = table.Column<DateTime>(nullable: false),
+                    DateCreated = table.Column<DateTime>(nullable: false),
                     LastActive = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
@@ -31,6 +31,7 @@ namespace Fuel.API.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Fullname = table.Column<string>(nullable: true),
+                    PhotoURL = table.Column<string>(nullable: true),
                     Address1 = table.Column<string>(nullable: true),
                     Address2 = table.Column<string>(nullable: true),
                     City = table.Column<string>(nullable: true),
@@ -52,8 +53,7 @@ namespace Fuel.API.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_ClientProfiles_UserId",
                 table: "ClientProfiles",
-                column: "UserId",
-                unique: true);
+                column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

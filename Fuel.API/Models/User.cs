@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Fuel.API.Models
 {
@@ -8,8 +9,8 @@ namespace Fuel.API.Models
         public string Username{get;set;}
         public byte[] PasswordHash {get;set;}
         public byte[] PasswordSalt {get;set;}
-        public DateTime LastLogin { get; set; }
+        public DateTime DateCreated { get; set; }
         public DateTime LastActive {get;set;}
-        public ClientProfile ClientProfile{get;set;}
+        public ICollection<ClientProfile> ClientProfile{get;set;}
     }
 }

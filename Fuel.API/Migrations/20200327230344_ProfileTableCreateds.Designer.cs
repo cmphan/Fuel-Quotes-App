@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Fuel.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20200327213653_profileUpdated")]
-    partial class profileUpdated
+    [Migration("20200327230344_ProfileTableCreateds")]
+    partial class ProfileTableCreateds
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -36,6 +36,9 @@ namespace Fuel.API.Migrations
                     b.Property<string>("Fullname")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("PhotoURL")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("State")
                         .HasColumnType("TEXT");
 
@@ -47,8 +50,7 @@ namespace Fuel.API.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId")
-                        .IsUnique();
+                    b.HasIndex("UserId");
 
                     b.ToTable("ClientProfiles");
                 });
@@ -59,10 +61,10 @@ namespace Fuel.API.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("LastActive")
+                    b.Property<DateTime>("DateCreated")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("LastLogin")
+                    b.Property<DateTime>("LastActive")
                         .HasColumnType("TEXT");
 
                     b.Property<byte[]>("PasswordHash")
@@ -96,8 +98,8 @@ namespace Fuel.API.Migrations
             modelBuilder.Entity("Fuel.API.Models.ClientProfile", b =>
                 {
                     b.HasOne("Fuel.API.Models.User", "user")
-                        .WithOne("ClientProfile")
-                        .HasForeignKey("Fuel.API.Models.ClientProfile", "UserId")
+                        .WithMany("ClientProfile")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
