@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
-import { LoginComponent } from '../login/login.component';
 import {map} from 'rxjs/operators';
 import {JwtHelperService} from '@auth0/angular-jwt';
+import {Subject} from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -10,6 +10,8 @@ export class AuthService {
 baseUrl = 'http://localhost:5000/api/auth/';
 jwtHelper = new JwtHelperService();
 decodedToken: any;
+private loginStatus = new Subject<boolean>();
+loginStatus$ = this.loginStatus.asObservable();
 constructor(private http: HttpClient) {
 }
   login(model: any) {
@@ -33,9 +35,7 @@ constructor(private http: HttpClient) {
     const token = localStorage.getItem('token');
     return !this.jwtHelper.isTokenExpired(token);
   }
-  registered(isRegistered: boolean)
-  {
-    console.log('registere in service is called');
-    return isRegistered;
+  checkLoginStatus(status: boolean) {
+    this.loginStatus.next(status);
   }
 }

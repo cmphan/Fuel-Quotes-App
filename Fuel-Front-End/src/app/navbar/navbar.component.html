@@ -13,10 +13,13 @@
             <li class="nav-item px-3 py-2">
               <a routerLink="/about" class="nav-link m-2 menu-item" href="#about">About Us</a>
             </li>
-            <li class="nav-item px-3 py-2">
-              <a routerLink="/login" class="nav-link m-2 menu-item" href="#projects">Login</a>
+            <li *ngIf="!isLogin" class="nav-item px-3 py-2">
+              <a routerLink="/login"class="nav-link m-2 menu-item" href="#projects">Login</a>
             </li>
-            <li class="nav-item px-3 py-2">
+            <li *ngIf="isLogin" class="nav-item px-3 py-2">
+              <a (click)="logout()" class="nav-link m-2 menu-item" href="#projects">Logout</a>
+            </li>
+            <li *ngIf="!isLogin" class="nav-item px-3 py-2">
               <a routerLink="/register" class="nav-link m-2 menu-item" href="#gallery">Register</a>
             </li>
             <li class="nav-item px-3 py-2">
@@ -31,7 +34,7 @@
               <a href="#"><i class="nav-link icon-header navbar-brand fa fa-facebook fa-2x"></i></a>
               <a href="#"><i class="nav-link icon-header navbar-brand fa fa-twitter-square fa-2x"></i></a>
               <a href="#"><i class="nav-link icon-header navbar-brand fa fa-linkedin fa-2x"></i></a>
-              <a routerLink="/profile" href="#"><img src="/assets/images/pro5.png" width="35" height="35"></a>
+              <a *ngIf="isLogin" routerLink="/profile" href="#"><img src="/assets/images/pro5.png" width="35" height="35"></a>
             </li>
           </ul>
     </div>

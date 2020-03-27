@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
   login() {
     this.authServices.login(this.model).subscribe(next => {
       this.router.navigateByUrl('/quote');
+      this.authServices.checkLoginStatus(true);
       this.wrongPassword = false;
       this.alertify.success('login successfully');
     }, error => {
