@@ -1,0 +1,14 @@
+namespace Fuel.API.Models
+{
+    public class ClientProfile
+    {
+        public int Id {get;set;}
+         public string Username {get; set;}
+        public string Fullname {get; set;}
+        public string Address1 {get; set;}
+        public string Address2 {get; set;}
+        public string City {get; set;}
+        public string State {get; set;}
+        public string Zipcode {get; set;}
+    }
+}

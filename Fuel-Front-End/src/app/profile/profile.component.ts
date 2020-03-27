@@ -11,12 +11,12 @@ export class ProfileComponent implements OnInit {
   profileForm: FormGroup;
   constructor(private formBuilder: FormBuilder, private authService: AuthService) {
     this.profileForm = this.formBuilder.group({
-      fullname: ['',[Validators.required]],
-      address1: ['',[Validators.required]],
+      fullname: ['', [Validators.required]],
+      address1: ['', [Validators.required]],
       address2: [''],
-      city: ['',[Validators.required]],
-      state: ['',[Validators.required]],
-      zipcode: ['',[Validators.required]],
+      city: ['', [Validators.required]],
+      state: ['', [Validators.required]],
+      zipcode: ['', [Validators.required]],
 
     });
   }

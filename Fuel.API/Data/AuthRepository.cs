@@ -75,5 +75,19 @@ namespace Fuel.API.Data
                 return true;
             return false;
         }
+        // Profile method 
+        public async Task<ClientProfile>Profile(ClientProfile profile, string fullName, string address1, string address2, string city, string state, string zipcode)
+        {
+            profile.Fullname = fullName;
+            profile.Address1 = address1;
+            profile.Address2 = address2;
+            profile.City = city;
+            profile.State = state;
+            profile.Zipcode = zipcode;
+            await _context.ClientProfiles.AddAsync(profile);
+            await _context.SaveChangesAsync();
+            return profile;
+        }
+
     }
 }

@@ -85,6 +85,20 @@ namespace Fuel.API.Controllers
                 token = tokenHandler.WriteToken(token)
             });
         }
+        /* profile function to post the client profile form (first time user) to the server */
+         [HttpPost("profile")]
+        public async Task<IActionResult> Profile(ClientProfileDto clientProfileDto)
+        {
+            var clientProfileToCreate = new ClientProfile
+            {
+                Username = clientProfileDto.Username
+            };
+            //Create user 
+            var createdProfile = await _repo.Profile(clientProfileToCreate,clientProfileDto.Fullname, clientProfileDto.Address1, clientProfileDto.Address2,clientProfileDto.City,
+            clientProfileDto.State, clientProfileDto.Zipcode);
+            //Status return 201 (created) => successful HTTP POST 
+            return StatusCode(201);
+        }
     }
     /* Task to do 
     + Provide controller for implementation of auth repository 
