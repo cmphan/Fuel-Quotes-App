@@ -32,7 +32,9 @@ export class RegistrationComponent implements OnInit {
       this.registerFailure = false;
       this.router.navigateByUrl('/profile');
       this.alertify.success('Resigter successfully');
+      // update login status after registered successfully
       this.authService.checkLoginStatus(true);
+      // update the new registered username 
     }, error => {
       this.registerFailure = true;
       this.registerSuccess = false;
@@ -42,6 +44,7 @@ export class RegistrationComponent implements OnInit {
   onSubmit() {
     this.model.username = this.form.value.username;
     this.model.password = this.form.value.password;
+    localStorage.setItem('username', this.model.username);
     this.register();
   }
   // Get username from the form

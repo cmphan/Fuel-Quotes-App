@@ -93,7 +93,7 @@ namespace Fuel.API.Controllers
             {
                 Username = clientProfileDto.Username
             };
-            //Create user 
+            //Create new client 
             var createdProfile = await _repo.Profile(clientProfileToCreate,clientProfileDto.Fullname, clientProfileDto.Address1, clientProfileDto.Address2,clientProfileDto.City,
             clientProfileDto.State, clientProfileDto.Zipcode);
             //Status return 201 (created) => successful HTTP POST 

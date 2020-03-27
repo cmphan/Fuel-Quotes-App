@@ -30,10 +30,17 @@ constructor(private http: HttpClient) {
   register(model: any) {
     return this.http.post(this.baseUrl + 'register', model);
   }
+  profile(model: any) {
+    return this.http.post(this.baseUrl + 'profile', model);
+  }
   // check if token is expired
   loggedIn() {
     const token = localStorage.getItem('token');
-    return !this.jwtHelper.isTokenExpired(token);
+    if (!this.jwtHelper.isTokenExpired(token) || localStorage.getItem('fullname') !== null) {
+      return true;
+    } else {
+     return false;
+    }
   }
   checkLoginStatus(status: boolean) {
     this.loginStatus.next(status);

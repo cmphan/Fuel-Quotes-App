@@ -6,25 +6,20 @@ import {AuthService} from '../_services/auth.service';
   styleUrls: ['./quotesPage.component.css']
 })
 export class QuotesPageComponent implements OnInit {
-
   constructor(public authService: AuthService) { }
-
-  ngOnInit() {
-  }
-
-  public gallon:number;
-  public price:number = 3;
-  public total:number;
-
-  cal(){
+  public gallon: number;
+  public price: number = 3;
+  public total: number;
+  cal() {
     this.total = this.gallon * this.price;
   }
   loggedIn() {
     return this.authService.loggedIn();
   }
-  logout() {
-    localStorage.removeItem('token');
-    console.log('logged out');
+  getFullName() {
+    return localStorage.getItem('fullname');
+  }
+  ngOnInit() {
   }
 
 }
