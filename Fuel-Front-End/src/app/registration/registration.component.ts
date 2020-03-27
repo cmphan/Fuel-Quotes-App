@@ -25,12 +25,14 @@ export class RegistrationComponent implements OnInit {
     this.form.controls.password.valueChanges.subscribe(x => this.form.controls.cnfpass.updateValueAndValidity());
   }
 
+  // Register successfully => redirect to profile => count as a successfully login
   register() {
     this.authService.register(this.model).subscribe(() => {
       this.registerSuccess = true;
       this.registerFailure = false;
       this.router.navigateByUrl('/profile');
       this.alertify.success('Resigter successfully');
+      this.authService.checkLoginStatus(true);
     }, error => {
       this.registerFailure = true;
       this.registerSuccess = false;
