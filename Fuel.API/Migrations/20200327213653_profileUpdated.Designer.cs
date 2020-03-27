@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Fuel.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20200327045738_ClientProfileDB")]
-    partial class ClientProfileDB
+    [Migration("20200327213653_profileUpdated")]
+    partial class profileUpdated
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -39,22 +39,31 @@ namespace Fuel.API.Migrations
                     b.Property<string>("State")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Username")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("UserId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Zipcode")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
                     b.ToTable("ClientProfiles");
                 });
 
             modelBuilder.Entity("Fuel.API.Models.User", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("UserId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("LastActive")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("LastLogin")
+                        .HasColumnType("TEXT");
 
                     b.Property<byte[]>("PasswordHash")
                         .HasColumnType("BLOB");
@@ -65,7 +74,7 @@ namespace Fuel.API.Migrations
                     b.Property<string>("Username")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("Id");
+                    b.HasKey("UserId");
 
                     b.ToTable("Users");
                 });
@@ -82,6 +91,15 @@ namespace Fuel.API.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Values");
+                });
+
+            modelBuilder.Entity("Fuel.API.Models.ClientProfile", b =>
+                {
+                    b.HasOne("Fuel.API.Models.User", "user")
+                        .WithOne("ClientProfile")
+                        .HasForeignKey("Fuel.API.Models.ClientProfile", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
