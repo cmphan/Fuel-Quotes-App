@@ -23,6 +23,9 @@ import { AuthService } from './_services/auth.service';
 import {HttpClientModule} from '@angular/common/http';
 import { AuthGuard } from './_guards/auth.guard';
 import { JwtModule } from '@auth0/angular-jwt';
+import { AlertifyService } from './_services/alertify.service';
+import { UserService } from './_services/user.service';
+import { UserDetailResolver } from './_resolvers/user-detail.resolver';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -33,7 +36,7 @@ const appRoutes: Routes =[
    {path:'about', component:AboutUsComponent},
    {path:'login', component:LoginComponent},
    {path:'register', component:RegistrationComponent},
-   {path:'quote', component:QuotesPageComponent, canActivate: [AuthGuard]},
+   {path:'quote/:username', component:QuotesPageComponent, resolve: {user: UserDetailResolver}, canActivate: [AuthGuard]},
    {path:'profile', component:ProfileComponent},
    {path:'home', component:Home_pageComponent},
    {path: '',component:Home_pageComponent},
@@ -77,7 +80,11 @@ const appRoutes: Routes =[
       })
    ],
    providers: [
-      AuthService
+      AuthService,
+      AlertifyService,
+      AuthGuard,
+      UserService,
+      UserDetailResolver
    ],
    bootstrap: [
       AppComponent
