@@ -11,10 +11,10 @@ namespace Fuel.API.Helpers
         {
             CreateMap<User, UserForListDto>()
                 .ForMember(dest => dest.PhotoURL, opt => opt.MapFrom(src => 
-                src.ClientProfile.FirstOrDefault(p => p.HasPhoto == true).PhotoURL));
+                src.ClientProfile.PhotoURL));
             CreateMap<User, UserForDetailedDto>()
                 .ForMember(dest => dest.PhotoURL, opt => opt.MapFrom(src => 
-                src.ClientProfile.FirstOrDefault(p => p.HasPhoto == true).PhotoURL));
+                src.ClientProfile.PhotoURL));
             CreateMap<ClientProfile, ClientProfileForDetailedDto>();
         }
     }

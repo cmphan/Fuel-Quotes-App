@@ -34,9 +34,6 @@ namespace Fuel.API.Migrations
                     b.Property<string>("Fullname")
                         .HasColumnType("TEXT");
 
-                    b.Property<bool>("HasPhoto")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("PhotoURL")
                         .HasColumnType("TEXT");
 
@@ -51,7 +48,8 @@ namespace Fuel.API.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserId")
+                        .IsUnique();
 
                     b.ToTable("ClientProfiles");
                 });
@@ -98,9 +96,9 @@ namespace Fuel.API.Migrations
 
             modelBuilder.Entity("Fuel.API.Models.ClientProfile", b =>
                 {
-                    b.HasOne("Fuel.API.Models.User", "user")
-                        .WithMany("ClientProfile")
-                        .HasForeignKey("UserId")
+                    b.HasOne("Fuel.API.Models.User", "User")
+                        .WithOne("ClientProfile")
+                        .HasForeignKey("Fuel.API.Models.ClientProfile", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

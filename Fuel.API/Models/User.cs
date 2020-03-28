@@ -11,6 +11,6 @@ namespace Fuel.API.Models
         public byte[] PasswordSalt {get;set;}
         public DateTime DateCreated { get; set; }
         public DateTime LastActive {get;set;}
-        public ICollection<ClientProfile> ClientProfile{get;set;}
+        public ClientProfile ClientProfile {get;set;}
     }
 }

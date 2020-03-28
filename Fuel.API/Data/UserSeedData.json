@@ -4,7 +4,7 @@
     "Password": "password",
     "DateCreated": "2019-07-20",
     "LastActive": "2019-07-20",
-    "ClientProfile": [
+    "ClientProfile":
       {
         "Fullname": "Stout Witt",
         "PhotoURL": "https://randomuser.me/api/portraits/men/60.jpg",
@@ -15,14 +15,13 @@
         "State": "Michigan",
         "ZipCode": 703603
       }
-    ]
   },
   {
     "Username": "Clayton",
     "Password": "password",
     "DateCreated": "2019-07-08",
     "LastActive": "2019-07-08",
-    "ClientProfile": [
+    "ClientProfile":
       {
         "Fullname": "Garrett Bates",
         "PhotoURL": "https://randomuser.me/api/portraits/men/40.jpg",
@@ -33,14 +32,13 @@
         "State": "Arkansas",
         "ZipCode": 417019
       }
-    ]
   },
   {
     "Username": "Figueroa",
     "Password": "password",
     "DateCreated": "2019-06-28",
     "LastActive": "2019-06-28",
-    "ClientProfile": [
+    "ClientProfile":
       {
         "Fullname": "Price Acevedo",
         "PhotoURL": "https://randomuser.me/api/portraits/men/24.jpg",
@@ -51,14 +49,13 @@
         "State": "West Virginia",
         "ZipCode": 291699
       }
-    ]
   },
   {
     "Username": "Manning",
     "Password": "password",
     "DateCreated": "2019-03-07",
     "LastActive": "2019-03-07",
-    "ClientProfile": [
+    "ClientProfile": 
       {
         "Fullname": "Love Hoffman",
         "PhotoURL": "https://randomuser.me/api/portraits/men/7.jpg",
@@ -69,14 +66,13 @@
         "State": "New Jersey",
         "ZipCode": 186824
       }
-    ]
   },
   {
     "Username": "Bernard",
     "Password": "password",
     "DateCreated": "2019-06-06",
     "LastActive": "2019-06-06",
-    "ClientProfile": [
+    "ClientProfile": 
       {
         "Fullname": "Velazquez English",
         "PhotoURL": "https://randomuser.me/api/portraits/men/87.jpg",
@@ -87,6 +83,5 @@
         "State": "Washington",
         "ZipCode": 126145
       }
-    ]
   }
 ]

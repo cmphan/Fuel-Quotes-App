@@ -12,6 +12,6 @@ namespace Fuel.API.Dtos
         public DateTime DateCreated { get; set; }
         public DateTime LastActive {get;set;}
         public string PhotoURL {get; set;}
-        public ICollection<ClientProfileForDetailedDto> ClientProfile{get;set;}
+        public ClientProfileForDetailedDto ClientProfile{get;set;}
     }
 }
