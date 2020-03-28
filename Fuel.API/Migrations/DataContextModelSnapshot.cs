@@ -34,6 +34,9 @@ namespace Fuel.API.Migrations
                     b.Property<string>("Fullname")
                         .HasColumnType("TEXT");
 
+                    b.Property<bool>("HasPhoto")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("PhotoURL")
                         .HasColumnType("TEXT");
 

@@ -85,6 +85,7 @@ namespace Fuel.API.Data
             profile.City = city;
             profile.State = state;
             profile.Zipcode = zipcode;
+            profile.UserId = 12;
             await _context.ClientProfiles.AddAsync(profile);
             await _context.SaveChangesAsync();
             return profile;

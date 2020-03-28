@@ -15,6 +15,5 @@ namespace Fuel.API.Dtos
         public string State {get; set;}
         [Required]
         public string Zipcode {get; set;}
-        public int UserId {get;set;}
     }
 }
