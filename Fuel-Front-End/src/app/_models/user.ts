@@ -6,5 +6,5 @@ export interface User {
     dateCreated: Date;
     lastActive: Date;
     photoURL?: string;
-    clientProfile?: ClientProfile[];
+    clientProfile?: ClientProfile;
 }

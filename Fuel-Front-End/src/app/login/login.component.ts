@@ -13,7 +13,7 @@ import { ClientProfile } from '../_models/clientProfile';
 export class LoginComponent implements OnInit {
   model: any = {};
   user: User;
-  profile: ClientProfile[];
+  profile: ClientProfile;
   constructor(private authServices: AuthService,
               private router: Router,
               private alertify: AlertifyService,
@@ -30,7 +30,8 @@ export class LoginComponent implements OnInit {
       this.userSerive.getUser(this.authServices.decodedToken.unique_name).subscribe((user: User) => {
         this.user = user;
         this.profile = user.clientProfile;
-        console.log(this.profile[0].address1);
+        this.userSerive.getUserProfile(this.profile);
+        console.log(this.profile.address1);
       }, error => {
         console.log('error loading data');
       });
