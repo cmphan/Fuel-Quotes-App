@@ -22,7 +22,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthService } from './_services/auth.service';
 import {HttpClientModule} from '@angular/common/http';
 import { AuthGuard } from './_guards/auth.guard';
+import { JwtModule } from '@auth0/angular-jwt';
 
+export function tokenGetter() {
+   return localStorage.getItem('token');
+}
 const appRoutes: Routes =[
    {path:'history', component: HistoryComponent},
    {path:'contact', component: ContactUsComponent},
@@ -63,7 +67,14 @@ const appRoutes: Routes =[
       ReactiveFormsModule,
       FormsModule,
       RouterModule.forRoot(appRoutes),
-      HttpClientModule
+      HttpClientModule,
+      JwtModule.forRoot({
+         config: {
+            tokenGetter: tokenGetter,
+            whitelistedDomains: ['localhost:5000'],
+            blacklistedRoutes: ['localhost:5000/api/auth']
+         }
+      })
    ],
    providers: [
       AuthService

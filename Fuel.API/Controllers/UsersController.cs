@@ -28,10 +28,10 @@ namespace Fuel.API.Controllers
             var usersToReturn = _mapper.Map<IEnumerable<UserForListDto>>(users);
             return Ok(usersToReturn);
         }
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetUser(int id)
+        [HttpGet("{username}")]
+        public async Task<IActionResult> GetUser(string username)
         {
-            var user = await _repo.GetUser(id);
+            var user = await _repo.GetUser(username);
             var userToReturn = _mapper.Map<UserForDetailedDto>(user);
             return Ok(userToReturn);
         }
