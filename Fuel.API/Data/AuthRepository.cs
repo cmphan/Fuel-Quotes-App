@@ -79,6 +79,7 @@ namespace Fuel.API.Data
         public async Task<ClientProfile>Profile(ClientProfile profile, string fullName, string address1, string address2, string city, string state, string zipcode)
         {
             profile.Fullname = fullName;
+            profile.PhotoURL = "123.com/j.jpg";
             profile.Address1 = address1;
             profile.Address2 = address2;
             profile.City = city;

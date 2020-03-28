@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Fuel.API.Models;
@@ -24,7 +23,6 @@ namespace Fuel.API.Data
                     user.PasswordHash = passwordhash;
                     user.PasswordSalt = passwordSalt;
                     user.Username = user.Username.ToLower();
-                    Console.WriteLine(user);
                     context.Users.Add(user);
                 }
                 context.SaveChanges();

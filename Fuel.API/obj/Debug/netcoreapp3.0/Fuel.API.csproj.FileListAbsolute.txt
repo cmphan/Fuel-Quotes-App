@@ -50,3 +50,6 @@
 /Users/cuongphan/Desktop/Spring 2020/COSC4353/Fuel-Quotes-App/Fuel-Quotes-App-Code/Fuel.API/bin/Debug/netcoreapp3.0/Microsoft.IdentityModel.Protocols.dll
 /Users/cuongphan/Desktop/Spring 2020/COSC4353/Fuel-Quotes-App/Fuel-Quotes-App-Code/Fuel.API/bin/Debug/netcoreapp3.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 /Users/cuongphan/Desktop/Spring 2020/COSC4353/Fuel-Quotes-App/Fuel-Quotes-App-Code/Fuel.API/bin/Debug/netcoreapp3.0/Data/UserSeedData.json
+/Users/cuongphan/Desktop/Spring 2020/COSC4353/Fuel-Quotes-App/Fuel-Quotes-App-Code/Fuel.API/bin/Debug/netcoreapp3.0/Microsoft.AspNetCore.JsonPatch.dll
+/Users/cuongphan/Desktop/Spring 2020/COSC4353/Fuel-Quotes-App/Fuel-Quotes-App-Code/Fuel.API/bin/Debug/netcoreapp3.0/Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+/Users/cuongphan/Desktop/Spring 2020/COSC4353/Fuel-Quotes-App/Fuel-Quotes-App-Code/Fuel.API/bin/Debug/netcoreapp3.0/Newtonsoft.Json.Bson.dll

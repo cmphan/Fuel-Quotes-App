@@ -5,8 +5,6 @@ namespace Fuel.API.Dtos
     public class ClientProfileDto
     {
         [Required]
-        public string Username {get; set;}
-        [Required]
         public string Fullname {get; set;}
         [Required]
         public string Address1 {get; set;}
@@ -17,5 +15,6 @@ namespace Fuel.API.Dtos
         public string State {get; set;}
         [Required]
         public string Zipcode {get; set;}
+        public int UserId {get;set;}
     }
 }
