@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../_services/auth.service';
 import {Router} from '@angular/router';
 import { AlertifyService } from '../_services/alertify.service';
+import { UserService } from '../_services/user.service';
+import { User } from '../_models/user';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -9,7 +11,11 @@ import { AlertifyService } from '../_services/alertify.service';
 })
 export class LoginComponent implements OnInit {
   model: any = {};
-  constructor(private authServices: AuthService, private router: Router, private alertify: AlertifyService) { }
+  user: User;
+  constructor(private authServices: AuthService,
+              private router: Router,
+              private alertify: AlertifyService,
+              private userSerive: UserService) { }
   wrongPassword: boolean;
   ngOnInit() {
   }
@@ -19,6 +25,12 @@ export class LoginComponent implements OnInit {
       this.authServices.checkLoginStatus(true);
       this.wrongPassword = false;
       this.alertify.success('login successfully');
+      this.userSerive.getUser(this.authServices.decodedToken.unique_name).subscribe((user: User) => {
+        this.user = user;
+        console.log(this.user.clientProfile);
+      }, error => {
+        console.log('error loading data');
+      });
     }, error => {
       this.wrongPassword = true;
     });
