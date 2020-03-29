@@ -33,6 +33,7 @@ export function tokenGetter() {
 const appRoutes: Routes =[
    {path:'history/:username', component: HistoryComponent, resolve: {user: UserDetailResolver}, canActivate: [AuthGuard]},
    {path:'contact', component: ContactUsComponent},
+   {path: 'history', component: HistoryComponent},
    {path:'about', component:AboutUsComponent},
    {path:'login', component:LoginComponent},
    {path:'register', component:RegistrationComponent},

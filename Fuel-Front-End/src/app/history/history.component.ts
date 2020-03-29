@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { User } from '../_models/user';
 
 @Component({
   selector: 'app-history',
@@ -7,12 +8,13 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./history.component.css']
 })
 export class HistoryComponent implements OnInit {
-
+data: any;
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.data.subscribe(data => {
-      console.log(data);
+      this.data = data;
+      console.log(this.data.user.quote);
     });
   }
 }
