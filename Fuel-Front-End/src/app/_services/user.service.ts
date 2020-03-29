@@ -11,6 +11,7 @@ import {map} from 'rxjs/operators';
 })
 export class UserService {
   profile: any;
+  quote: any;
   baseURL = environment.apiURL;
 constructor(private http: HttpClient) { }
 getUser(username: string): Observable<User> {
@@ -30,6 +31,17 @@ createProfile(username: string, model: any) {
         localStorage.setItem('state', this.profile.state);
         localStorage.setItem('zipcode', this.profile.zipcode);
         localStorage.setItem('photoURL', this.profile.photoURL);
+      }
+    }));
+}
+getQuote(username: string, model: any) {
+  return this.http.post(this.baseURL + 'users/' + username + '/quote', model).
+  pipe (
+    map((response: any) => {
+      this.quote = response;
+      if (Object.keys(this.quote).length > 0) {
+        localStorage.setItem('suggestedPrice', this.quote.suggestedPrice);
+        localStorage.setItem('amountDue', this.quote.amountDue);
       }
     }));
 }

@@ -5,6 +5,7 @@ import { ClientProfile } from '../_models/clientProfile';
 import { ActivatedRoute } from '@angular/router';
 import { User } from '../_models/user';
 import { Quote } from '../_models/quote';
+import { AlertifyService } from '../_services/alertify.service';
 @Component({
   selector: 'app-quotesPage',
   templateUrl: './quotesPage.component.html',
@@ -13,29 +14,39 @@ import { Quote } from '../_models/quote';
 export class QuotesPageComponent implements OnInit {
   constructor(private authService: AuthService,
               private userService: UserService,
+              private alertify: AlertifyService,
               private route: ActivatedRoute) { }
-  public gallon: number;
-  public price: number = 3;
-  public total: number;
   profile: ClientProfile;
-  quotes: Quote[];
   user: User;
-  address1: string;
-  fullname: string;
-  cal() {
-    this.total = this.gallon * this.price;
-  }
+  newQuote: any = { price : 0, amountDue : 0};
+  newQuoteForm =  new FormData();
   loggedIn() {
     return this.authService.loggedIn();
   }
   getFullName() {
-    return this.fullname;
+    return this.newQuote.fullname;
+  }
+  getQuote() {
+    console.log(this.newQuote.gallon);
+    console.log(this.newQuote.date);
+    this.newQuoteForm.append('GallonsRequested', this.newQuote.gallon);
+    this.newQuoteForm.append('DeliveryAddress', this.newQuote.address1);
+    this.newQuoteForm.append('DeliveryDate', this.newQuote.date);
+    this.userService.getQuote(this.authService.decodedToken.unique_name, this.newQuoteForm).subscribe(() => {
+      this.newQuote.price = localStorage.getItem('suggestedPrice');
+      this.newQuote.amountDue = localStorage.getItem('amountDue');
+      this.alertify.success('Quote Succesfully');
+      localStorage.removeItem('suggestedPrice');
+      localStorage.removeItem('amountDue');
+    }, error => {
+      console.log(error);
+    })
   }
   ngOnInit() {
       this.route.data.subscribe(data => {
       this.user = data.user;
-      this.fullname = this.user.clientProfile.fullname;
-      this.address1 = this.user.clientProfile.address1;
+      this.newQuote.fullname = this.user.clientProfile.fullname;
+      this.newQuote.address1 = this.user.clientProfile.address1;
     });
 
   }

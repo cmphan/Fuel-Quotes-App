@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { UserService } from '../_services/user.service';
 import {map} from 'rxjs/operators';
+import { AuthService } from '../_services/auth.service';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -19,6 +20,7 @@ export class ProfileComponent implements OnInit {
   selectedFile: File = null;
   constructor(private formBuilder: FormBuilder, private userService: UserService,
               private alertify: AlertifyService, private router: Router,
+              private authService: AuthService,
               private http: HttpClient) {
     this.profileForm = this.formBuilder.group({
       fullname: ['', [Validators.required]],
@@ -31,7 +33,7 @@ export class ProfileComponent implements OnInit {
     });
   }
   profile() {
-    this.userService.createProfile('clayton', this.fd).
+    this.userService.createProfile(this.authService.decodedToken.unique_name, this.fd).
     subscribe(() => {
       console.log('successfullll!!');
     }, error => {
