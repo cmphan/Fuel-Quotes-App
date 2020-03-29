@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, BehaviorSubject } from 'rxjs';
 import { User } from '../_models/user';
 import {map} from 'rxjs/operators';
 
@@ -13,6 +13,10 @@ export class UserService {
   profile: any;
   quote: any;
   baseURL = environment.apiURL;
+  private profilePicURL = new Subject<string>();
+  profilePicURL$ = this.profilePicURL.asObservable();
+  private isSetProfilePic = new Subject<boolean>();
+  isSetProfilePic$ = this.isSetProfilePic.asObservable();
 constructor(private http: HttpClient) { }
 getUser(username: string): Observable<User> {
   return this.http.get<User>(this.baseURL + 'users/' + username);
@@ -44,6 +48,12 @@ getQuote(username: string, model: any) {
         localStorage.setItem('amountDue', this.quote.amountDue);
       }
     }));
+}
+profilePic(profilePicLink: string) {
+  this.profilePicURL.next(profilePicLink);
+}
+isSetPicProfile(isSet: boolean) {
+  this.isSetProfilePic.next (isSet);
 }
 }
 

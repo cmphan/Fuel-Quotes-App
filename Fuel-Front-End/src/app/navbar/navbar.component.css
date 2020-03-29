@@ -37,4 +37,8 @@
     padding-left: 15px;
 
 }
+.profile-pic-nav {
+    border-radius: 50%;
+    vertical-align: middle;
+}
 

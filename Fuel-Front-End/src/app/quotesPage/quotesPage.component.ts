@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { User } from '../_models/user';
 import { Quote } from '../_models/quote';
 import { AlertifyService } from '../_services/alertify.service';
+import { PlatformLocation } from '@angular/common'
 @Component({
   selector: 'app-quotesPage',
   templateUrl: './quotesPage.component.html',
@@ -15,10 +16,17 @@ export class QuotesPageComponent implements OnInit {
   constructor(private authService: AuthService,
               private userService: UserService,
               private alertify: AlertifyService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private location: PlatformLocation) {
+              location.onPopState(() => { 
+                // Detect a backward click on brower and change status to log out 
+                this.authService.checkLoginStatus(false);
+              });
+               }
   profile: ClientProfile;
   user: User;
   newQuote: any = { price : 0, amountDue : 0};
+  prevQuote: any = {};
   newQuoteForm =  new FormData();
   loggedIn() {
     return this.authService.loggedIn();
@@ -26,18 +34,17 @@ export class QuotesPageComponent implements OnInit {
   getFullName() {
     return this.newQuote.fullname;
   }
+  
   getQuote() {
-    console.log(this.newQuote.gallon);
-    console.log(this.newQuote.date);
     this.newQuoteForm.append('GallonsRequested', this.newQuote.gallon);
     this.newQuoteForm.append('DeliveryAddress', this.newQuote.address1);
     this.newQuoteForm.append('DeliveryDate', this.newQuote.date);
     this.userService.getQuote(this.authService.decodedToken.unique_name, this.newQuoteForm).subscribe(() => {
-      this.newQuote.price = localStorage.getItem('suggestedPrice');
-      this.newQuote.amountDue = localStorage.getItem('amountDue');
-      this.alertify.success('Quote Succesfully');
-      localStorage.removeItem('suggestedPrice');
-      localStorage.removeItem('amountDue');
+    this.newQuote.price = localStorage.getItem('suggestedPrice');
+    this.newQuote.amountDue = localStorage.getItem('amountDue');
+    this.alertify.success('Quote Succesfully');
+    localStorage.removeItem('suggestedPrice');
+    localStorage.removeItem('amountDue');
     }, error => {
       console.log(error);
     })

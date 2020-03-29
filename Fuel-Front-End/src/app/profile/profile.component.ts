@@ -13,6 +13,7 @@ import { AuthService } from '../_services/auth.service';
 })
 export class ProfileComponent implements OnInit {
   model: any = {};
+  userProfile : any;
   profileLocalStorage: any = {};
   profileCompleted: boolean;
   profileForm: FormGroup;
@@ -49,6 +50,7 @@ export class ProfileComponent implements OnInit {
     this.profileLocalStorage.state = localStorage.getItem('state');
     this.profileLocalStorage.zipcode = localStorage.getItem('zipcode');
     this.profileLocalStorage.photoURL = localStorage.getItem('photoURL');
+    this.userService.profilePic(this.profileLocalStorage.photoURL);
     localStorage.removeItem('fullname');
     localStorage.removeItem('address1');
     localStorage.removeItem('address2');
@@ -56,7 +58,7 @@ export class ProfileComponent implements OnInit {
     localStorage.removeItem('state');
     localStorage.removeItem('zipcode');
     localStorage.removeItem('photoURL');
-    console.log(this.profileLocalStorage);
+    console.log(this.userProfile);
   }
   onSubmit() {
     this.fd.append('File', this.selectedFile, this.selectedFile.name);
@@ -70,11 +72,11 @@ export class ProfileComponent implements OnInit {
     this.profile();
     this.getProfile();
     this.profileCompleted = true;
+    this.userService.isSetPicProfile(true);
   }
     onFileSelected(event) {
     this.selectedFile = event.target.files[0];
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 }
