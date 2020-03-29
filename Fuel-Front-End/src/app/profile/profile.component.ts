@@ -13,12 +13,12 @@ import { AuthService } from '../_services/auth.service';
 })
 export class ProfileComponent implements OnInit {
   model: any = {};
-  userProfile : any;
   profileLocalStorage: any = {};
   profileCompleted: boolean;
   profileForm: FormGroup;
   fd = new FormData();
   selectedFile: File = null;
+  isEdit = false;
   constructor(private formBuilder: FormBuilder, private userService: UserService,
               private alertify: AlertifyService, private router: Router,
               private authService: AuthService,
@@ -51,6 +51,8 @@ export class ProfileComponent implements OnInit {
     this.profileLocalStorage.zipcode = localStorage.getItem('zipcode');
     this.profileLocalStorage.photoURL = localStorage.getItem('photoURL');
     this.userService.profilePic(this.profileLocalStorage.photoURL);
+    this.isEdit = true;
+    this.profileForm.disable();
     localStorage.removeItem('fullname');
     localStorage.removeItem('address1');
     localStorage.removeItem('address2');
@@ -58,7 +60,6 @@ export class ProfileComponent implements OnInit {
     localStorage.removeItem('state');
     localStorage.removeItem('zipcode');
     localStorage.removeItem('photoURL');
-    console.log(this.userProfile);
   }
   onSubmit() {
     this.fd.append('File', this.selectedFile, this.selectedFile.name);
@@ -77,6 +78,12 @@ export class ProfileComponent implements OnInit {
     onFileSelected(event) {
     this.selectedFile = event.target.files[0];
   }
+  clickEdit() {
+    this.profileForm.enable();
+    this.profileForm.markAsUntouched();
+    this.isEdit = false;
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 }
