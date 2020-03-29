@@ -12,5 +12,6 @@ namespace Fuel.API.Models
         public DateTime DateCreated { get; set; }
         public DateTime LastActive {get;set;}
         public ClientProfile ClientProfile {get;set;}
+        public ICollection<Quote> Quote {get; set;}
     }
 }

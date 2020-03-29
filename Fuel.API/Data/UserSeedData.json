@@ -1,87 +1,146 @@
 [
   {
-    "Username": "Callahan",
+    "Username": "Hahn",
     "Password": "password",
-    "DateCreated": "2019-07-20",
-    "LastActive": "2019-07-20",
-    "ClientProfile":
+    "DateCreated": "2019-07-31",
+    "LastActive": "2019-06-11",
+    "ClientProfile": {
+      "Fullname": "Hyde Avery",
+      "PhotoURL": "https://randomuser.me/api/portraits/men/60.jpg",
+      "Address1": "921 Trucklemans Lane",
+      "Address2": "218 Village Road",
+      "City": "Brookfield",
+      "State": "California",
+      "Zipcode": 665501
+    },
+    "Quote": [
       {
-        "Fullname": "Stout Witt",
-        "PhotoURL": "https://randomuser.me/api/portraits/men/60.jpg",
-        "HasPhoto": true,
-        "Address1": "653 Brooklyn Avenue",
-        "Address2": "436 Grattan Street",
-        "City": "Weedville",
-        "State": "Michigan",
-        "ZipCode": 703603
+        "GallonsRequested": 4686,
+        "DeliveryAddress": "810 Nichols Avenue, Manitou, Michigan, 4759",
+        "DeliveryDate": "2020-01-29",
+        "SuggestedPrice": 2582,
+        "AmountDue": 5536
       }
+    ]
   },
   {
-    "Username": "Clayton",
+    "Username": "Lewis",
     "Password": "password",
-    "DateCreated": "2019-07-08",
-    "LastActive": "2019-07-08",
-    "ClientProfile":
+    "DateCreated": "2019-07-21",
+    "LastActive": "2019-07-22",
+    "ClientProfile": {
+      "Fullname": "Boyer Dillard",
+      "PhotoURL": "https://randomuser.me/api/portraits/men/60.jpg",
+      "Address1": "602 Seigel Street",
+      "Address2": "426 Wilson Avenue",
+      "City": "Hegins",
+      "State": "Arizona",
+      "Zipcode": 827108
+    },
+    "Quote": [
       {
-        "Fullname": "Garrett Bates",
-        "PhotoURL": "https://randomuser.me/api/portraits/men/40.jpg",
-        "HasPhoto": true,
-        "Address1": "966 Bainbridge Street",
-        "Address2": "278 Grand Street",
-        "City": "Grenelefe",
-        "State": "Arkansas",
-        "ZipCode": 417019
+        "GallonsRequested": 3201,
+        "DeliveryAddress": "585 Cooke Court, Boyd, Massachusetts, 284",
+        "DeliveryDate": "2020-02-22",
+        "SuggestedPrice": 2037,
+        "AmountDue": 1084
       }
+    ]
   },
   {
-    "Username": "Figueroa",
+    "Username": "Terrell",
     "Password": "password",
-    "DateCreated": "2019-06-28",
-    "LastActive": "2019-06-28",
-    "ClientProfile":
+    "DateCreated": "2019-07-21",
+    "LastActive": "2019-09-13",
+    "ClientProfile": {
+      "Fullname": "Mcpherson Hodges",
+      "PhotoURL": "https://randomuser.me/api/portraits/men/60.jpg",
+      "Address1": "147 Olive Street",
+      "Address2": "384 Driggs Avenue",
+      "City": "Yorklyn",
+      "State": "Texas",
+      "Zipcode": 284691
+    },
+    "Quote": [
       {
-        "Fullname": "Price Acevedo",
-        "PhotoURL": "https://randomuser.me/api/portraits/men/24.jpg",
-        "HasPhoto": true,
-        "Address1": "215 Ditmas Avenue",
-        "Address2": "749 Heath Place",
-        "City": "Konterra",
-        "State": "West Virginia",
-        "ZipCode": 291699
+        "GallonsRequested": 9672,
+        "DeliveryAddress": "323 Aster Court, Jeff, District Of Columbia, 5966",
+        "DeliveryDate": "2019-06-12",
+        "SuggestedPrice": 7009,
+        "AmountDue": 9930
       }
+    ]
   },
   {
-    "Username": "Manning",
+    "Username": "Roach",
     "Password": "password",
-    "DateCreated": "2019-03-07",
-    "LastActive": "2019-03-07",
-    "ClientProfile": 
+    "DateCreated": "2019-08-13",
+    "LastActive": "2019-07-30",
+    "ClientProfile": {
+      "Fullname": "Cotton Bartlett",
+      "PhotoURL": "https://randomuser.me/api/portraits/men/60.jpg",
+      "Address1": "319 Bragg Court",
+      "Address2": "986 Karweg Place",
+      "City": "Garfield",
+      "State": "Idaho",
+      "Zipcode": 279835
+    },
+    "Quote": [
       {
-        "Fullname": "Love Hoffman",
-        "PhotoURL": "https://randomuser.me/api/portraits/men/7.jpg",
-        "HasPhoto": true,
-        "Address1": "254 Micieli Place",
-        "Address2": "570 Bleecker Street",
-        "City": "Volta",
-        "State": "New Jersey",
-        "ZipCode": 186824
+        "GallonsRequested": 8366,
+        "DeliveryAddress": "685 Stockton Street, Beason, Missouri, 6077",
+        "DeliveryDate": "2019-10-16",
+        "SuggestedPrice": 4819,
+        "AmountDue": 3077
       }
+    ]
   },
   {
-    "Username": "Bernard",
+    "Username": "Winters",
     "Password": "password",
-    "DateCreated": "2019-06-06",
-    "LastActive": "2019-06-06",
-    "ClientProfile": 
+    "DateCreated": "2019-12-14",
+    "LastActive": "2019-04-17",
+    "ClientProfile": {
+      "Fullname": "Marshall Shepherd",
+      "PhotoURL": "https://randomuser.me/api/portraits/men/60.jpg",
+      "Address1": "653 Gold Street",
+      "Address2": "339 Roosevelt Court",
+      "City": "Gallina",
+      "State": "Hawaii",
+      "Zipcode": 665983
+    },
+    "Quote": [
       {
-        "Fullname": "Velazquez English",
-        "PhotoURL": "https://randomuser.me/api/portraits/men/87.jpg",
-        "HasPhoto": true,
-        "Address1": "528 Murdock Court",
-        "Address2": "651 Nixon Court",
-        "City": "Imperial",
-        "State": "Washington",
-        "ZipCode": 126145
+        "GallonsRequested": 1168,
+        "DeliveryAddress": "498 Eldert Lane, Graball, New Hampshire, 5283",
+        "DeliveryDate": "2020-03-28",
+        "SuggestedPrice": 2799,
+        "AmountDue": 3526
       }
+    ]
+  },
+  {
+    "Username": "Strong",
+    "Password": "password",
+    "DateCreated": "2019-04-13",
+    "LastActive": "2019-10-08",
+    "ClientProfile": {
+      "Fullname": "Gould Richmond",
+      "PhotoURL": "https://randomuser.me/api/portraits/men/60.jpg",
+      "Address1": "541 Quentin Road",
+      "Address2": "883 Cove Lane",
+      "City": "Falmouth",
+      "State": "Virgin Islands",
+      "Zipcode": 327684
+    },
+    "Quote": [
+      {
+        "GallonsRequested": 8012,
+        "DeliveryAddress": "985 Granite Street, Wikieup, Montana, 8542",
+        "DeliveryDate": "2019-06-04",
+        "SuggestedPrice": 9517,
+        "AmountDue": 1348
+      }
+    ]
   }
 ]

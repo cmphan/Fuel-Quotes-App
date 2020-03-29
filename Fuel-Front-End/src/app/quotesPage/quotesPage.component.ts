@@ -4,6 +4,7 @@ import { UserService } from '../_services/user.service';
 import { ClientProfile } from '../_models/clientProfile';
 import { ActivatedRoute } from '@angular/router';
 import { User } from '../_models/user';
+import { Quote } from '@angular/compiler';
 @Component({
   selector: 'app-quotesPage',
   templateUrl: './quotesPage.component.html',
@@ -17,6 +18,7 @@ export class QuotesPageComponent implements OnInit {
   public price: number = 3;
   public total: number;
   profile: ClientProfile;
+  quotes: Quote[];
   user: User;
   address1: string;
   fullname: string;
@@ -32,8 +34,11 @@ export class QuotesPageComponent implements OnInit {
   ngOnInit() {
       this.route.data.subscribe(data => {
       this.user = data.user;
+      console.log(this.user);
       this.fullname = this.user.clientProfile.fullname;
       this.address1 = this.user.clientProfile.address1;
+      this.quotes = this.user.Quote;
+      console.log(this.quotes);
     });
 
   }

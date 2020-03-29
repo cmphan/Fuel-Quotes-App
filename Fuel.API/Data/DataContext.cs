@@ -9,5 +9,6 @@ namespace Fuel.API.Data
         public DbSet<Value>Values{get;set;}
         public DbSet<User>Users{get;set;}
         public DbSet<ClientProfile>ClientProfiles{get;set;}
+        public DbSet<Quote> Quote {get; set;}
     }
 }

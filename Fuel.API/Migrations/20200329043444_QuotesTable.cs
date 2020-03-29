@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Fuel.API.Migrations
 {
-    public partial class ProfilePhotoPulicId : Migration
+    public partial class QuotesTable : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -51,17 +51,49 @@ namespace Fuel.API.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Quote",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    GallonsRequested = table.Column<double>(nullable: false),
+                    DeliveryAddress = table.Column<string>(nullable: true),
+                    DeliveryDate = table.Column<DateTime>(nullable: false),
+                    SuggestedPrice = table.Column<double>(nullable: false),
+                    AmountDue = table.Column<double>(nullable: false),
+                    UserId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Quote", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Quote_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_ClientProfiles_UserId",
                 table: "ClientProfiles",
                 column: "UserId",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Quote_UserId",
+                table: "Quote",
+                column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
                 name: "ClientProfiles");
+
+            migrationBuilder.DropTable(
+                name: "Quote");
 
             migrationBuilder.DropTable(
                 name: "Users");

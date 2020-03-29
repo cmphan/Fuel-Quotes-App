@@ -13,5 +13,6 @@ namespace Fuel.API.Dtos
         public DateTime LastActive {get;set;}
         public string PhotoURL {get; set;}
         public ClientProfileForDetailedDto ClientProfile{get;set;}
+        public IEnumerable<QuoteForDetailedDto> Quote {get;set;}
     }
 }

@@ -31,7 +31,7 @@ namespace Fuel.API.Data
 
         public async Task<User> GetUser(string username)
         {
-            var user = await _context.Users.Include(p => p.ClientProfile).FirstOrDefaultAsync(u => u.Username ==username);
+            var user = await _context.Users.Include(p => p.ClientProfile).Include(q => q.Quote).FirstOrDefaultAsync(u => u.Username ==username);
             return user;
         }
 

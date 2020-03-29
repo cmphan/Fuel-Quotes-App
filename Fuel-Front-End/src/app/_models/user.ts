@@ -1,4 +1,5 @@
 import { ClientProfile } from './clientProfile';
+import { Quote } from '@angular/compiler';
 
 export interface User {
     userId: number;
@@ -7,4 +8,5 @@ export interface User {
     lastActive: Date;
     photoURL?: string;
     clientProfile?: ClientProfile;
+    Quote?: Quote[];
 }

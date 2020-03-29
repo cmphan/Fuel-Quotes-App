@@ -57,6 +57,37 @@ namespace Fuel.API.Migrations
                     b.ToTable("ClientProfiles");
                 });
 
+            modelBuilder.Entity("Fuel.API.Models.Quote", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<double>("AmountDue")
+                        .HasColumnType("REAL");
+
+                    b.Property<string>("DeliveryAddress")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("DeliveryDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<double>("GallonsRequested")
+                        .HasColumnType("REAL");
+
+                    b.Property<double>("SuggestedPrice")
+                        .HasColumnType("REAL");
+
+                    b.Property<int?>("UserId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Quote");
+                });
+
             modelBuilder.Entity("Fuel.API.Models.User", b =>
                 {
                     b.Property<int>("UserId")
@@ -104,6 +135,13 @@ namespace Fuel.API.Migrations
                         .HasForeignKey("Fuel.API.Models.ClientProfile", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Fuel.API.Models.Quote", b =>
+                {
+                    b.HasOne("Fuel.API.Models.User", "User")
+                        .WithMany("Quote")
+                        .HasForeignKey("UserId");
                 });
 #pragma warning restore 612, 618
         }
