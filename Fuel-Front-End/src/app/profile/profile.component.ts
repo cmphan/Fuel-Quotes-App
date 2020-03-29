@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
-import { AuthService } from '../_services/auth.service';
 import { AlertifyService } from '../_services/alertify.service';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { UserService } from '../_services/user.service';
+import {map} from 'rxjs/operators';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -10,10 +12,14 @@ import { Router } from '@angular/router';
 })
 export class ProfileComponent implements OnInit {
   model: any = {};
+  profileLocalStorage: any = {};
   profileCompleted: boolean;
   profileForm: FormGroup;
-  constructor(private formBuilder: FormBuilder, private authService: AuthService,
-              private alertify: AlertifyService, private router: Router) {
+  fd = new FormData();
+  selectedFile: File = null;
+  constructor(private formBuilder: FormBuilder, private userService: UserService,
+              private alertify: AlertifyService, private router: Router,
+              private http: HttpClient) {
     this.profileForm = this.formBuilder.group({
       fullname: ['', [Validators.required]],
       address1: ['', [Validators.required]],
@@ -25,28 +31,46 @@ export class ProfileComponent implements OnInit {
     });
   }
   profile() {
-    this.authService.profile(this.model).subscribe(() => {
-      // Should remove username here
-      this.alertify.success('profile created successfully');
-      this.router.navigateByUrl('/quote');
-      localStorage.removeItem('username');
+    this.userService.createProfile('clayton', this.fd).
+    subscribe(() => {
+      console.log('successfullll!!');
     }, error => {
       console.log(error);
-    });
-
+    }
+    );
+  }
+  getProfile() {
+    this.profileLocalStorage.fullname = localStorage.getItem('fullname');
+    this.profileLocalStorage.address1 = localStorage.getItem('address1');
+    this.profileLocalStorage.address2 = localStorage.getItem('address2');
+    this.profileLocalStorage.city = localStorage.getItem('city');
+    this.profileLocalStorage.state = localStorage.getItem('state');
+    this.profileLocalStorage.zipcode = localStorage.getItem('zipcode');
+    this.profileLocalStorage.photoURL = localStorage.getItem('photoURL');
+    localStorage.removeItem('fullname');
+    localStorage.removeItem('address1');
+    localStorage.removeItem('address2');
+    localStorage.removeItem('city');
+    localStorage.removeItem('state');
+    localStorage.removeItem('zipcode');
+    localStorage.removeItem('photoURL');
+    console.log(this.profileLocalStorage);
   }
   onSubmit() {
-    this.model.username = localStorage.getItem('username');
-    this.model.fullname = this.profileForm.value.fullname;
-    localStorage.setItem('fullname', this.model.fullname);
-    this.model.address1 = this.profileForm.value.address1;
-    this.model.address2 = this.profileForm.value.address2;
-    this.model.city = this.profileForm.value.city;
-    this.model.state = this.profileForm.value.state;
-    this.model.zipcode = this.profileForm.value.zipcode;
-    console.log(this.model);
+    this.fd.append('File', this.selectedFile, this.selectedFile.name);
+    this.fd.append('fullname', this.profileForm.value.fullname);
+    this.fd.append('address1', this.profileForm.value.address1);
+    this.fd.append('address2', this.profileForm.value.address2);
+    this.fd.append('city', this.profileForm.value.city);
+    this.fd.append('state', this.profileForm.value.state);
+    this.fd.append('zipcode', this.profileForm.value.zipcode);
     this.profileForm.markAllAsTouched();
     this.profile();
+    this.getProfile();
+    this.profileCompleted = true;
+  }
+    onFileSelected(event) {
+    this.selectedFile = event.target.files[0];
   }
 
   ngOnInit() {

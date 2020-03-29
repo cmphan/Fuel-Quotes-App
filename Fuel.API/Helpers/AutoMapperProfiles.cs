@@ -16,6 +16,9 @@ namespace Fuel.API.Helpers
                 .ForMember(dest => dest.PhotoURL, opt => opt.MapFrom(src => 
                 src.ClientProfile.PhotoURL));
             CreateMap<ClientProfile, ClientProfileForDetailedDto>();
+            CreateMap<ClientProfile,ProfileForReturnDto>();
+            CreateMap<ProfileForCreationDto, ClientProfile>();
+
         }
     }
 }

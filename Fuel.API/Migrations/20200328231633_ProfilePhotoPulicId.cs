@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Fuel.API.Migrations
 {
-    public partial class profileTableOneToOne : Migration
+    public partial class ProfilePhotoPulicId : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -32,6 +32,7 @@ namespace Fuel.API.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Fullname = table.Column<string>(nullable: true),
                     PhotoURL = table.Column<string>(nullable: true),
+                    PhotoPublicId = table.Column<string>(nullable: true),
                     Address1 = table.Column<string>(nullable: true),
                     Address2 = table.Column<string>(nullable: true),
                     City = table.Column<string>(nullable: true),

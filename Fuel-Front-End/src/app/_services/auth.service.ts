@@ -31,9 +31,6 @@ constructor(private http: HttpClient) {
   register(model: any) {
     return this.http.post(this.baseUrl + 'register', model);
   }
-  profile(model: any) {
-    return this.http.post(this.baseUrl + 'profile', model);
-  }
   // check if token is expired
   loggedIn() {
     const token = localStorage.getItem('token');

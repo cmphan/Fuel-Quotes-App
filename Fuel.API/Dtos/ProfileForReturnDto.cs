@@ -1,6 +1,6 @@
-namespace Fuel.API.Models
+namespace Fuel.API.Dtos
 {
-    public class ClientProfile
+    public class ProfileForReturnDto
     {
         public int Id {get;set;}
         public string Fullname {get; set;}
@@ -11,7 +11,5 @@ namespace Fuel.API.Models
         public string City {get; set;}
         public string State {get; set;}
         public string Zipcode {get; set;}
-        public int UserId {get;set;}
-        public User User {get;set;}
     }
 }

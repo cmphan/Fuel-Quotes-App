@@ -23,6 +23,12 @@ namespace Fuel.API.Data
             _context.Remove(entity);
         }
 
+        public async Task<ClientProfile> GetProfile(int id)
+        {
+            var profile = await _context.ClientProfiles.FirstOrDefaultAsync(p => p.Id == id);
+            return profile;
+        }
+
         public async Task<User> GetUser(string username)
         {
             var user = await _context.Users.Include(p => p.ClientProfile).FirstOrDefaultAsync(u => u.Username ==username);

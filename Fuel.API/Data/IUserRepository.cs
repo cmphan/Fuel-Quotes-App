@@ -11,5 +11,6 @@ namespace Fuel.API.Data
          Task<bool> SaveAll();
          Task<IEnumerable<User>> GetUsers();
          Task<User> GetUser(string username);
+         Task<ClientProfile> GetProfile(int id);
     }
 }

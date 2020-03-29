@@ -1,6 +1,8 @@
-namespace Fuel.API.Models
+using Microsoft.AspNetCore.Http;
+
+namespace Fuel.API.Dtos
 {
-    public class ClientProfile
+    public class ProfileForCreationDto
     {
         public int Id {get;set;}
         public string Fullname {get; set;}
@@ -11,7 +13,7 @@ namespace Fuel.API.Models
         public string City {get; set;}
         public string State {get; set;}
         public string Zipcode {get; set;}
-        public int UserId {get;set;}
-        public User User {get;set;}
+        public IFormFile File {get;set;}
+
     }
 }

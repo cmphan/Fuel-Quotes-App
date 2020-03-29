@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Fuel.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20200328163717_profileTableOneToOne")]
-    partial class profileTableOneToOne
+    [Migration("20200328231633_ProfilePhotoPulicId")]
+    partial class ProfilePhotoPulicId
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -34,6 +34,9 @@ namespace Fuel.API.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Fullname")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("PhotoPublicId")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("PhotoURL")
