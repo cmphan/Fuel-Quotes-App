@@ -31,7 +31,7 @@ export function tokenGetter() {
    return localStorage.getItem('token');
 }
 const appRoutes: Routes =[
-   {path:'history', component: HistoryComponent},
+   {path:'history/:username', component: HistoryComponent, resolve: {user: UserDetailResolver}, canActivate: [AuthGuard]},
    {path:'contact', component: ContactUsComponent},
    {path:'about', component:AboutUsComponent},
    {path:'login', component:LoginComponent},

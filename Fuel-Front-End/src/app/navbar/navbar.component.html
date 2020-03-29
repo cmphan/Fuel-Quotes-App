@@ -17,10 +17,13 @@
               <a routerLink="/login"class="nav-link m-2 menu-item" href="#projects">Login</a>
             </li>
             <li *ngIf="isLogin" class="nav-item px-3 py-2">
-              <a (click)="logout()" class="nav-link m-2 menu-item" href="#projects">Logout</a>
+              <a (click)="logout()" routerLink="/home" class="nav-link m-2 menu-item" href="#projects">Logout</a>
             </li>
             <li *ngIf="!isLogin" class="nav-item px-3 py-2">
               <a routerLink="/register" class="nav-link m-2 menu-item" href="#gallery">Register</a>
+            </li>
+            <li *ngIf="isLogin" class="nav-item px-3 py-2">
+              <a [routerLink]= "['/history', username]" class="nav-link m-2 menu-item" href="#gallery">Quotes History</a>
             </li>
             <li class="nav-item px-3 py-2">
               <a routerLink="/contact" class="nav-link m-2 menu-item" href="#contact">Contact Us</a>
@@ -30,7 +33,7 @@
 
             <li class="nav-item px-3 py-3">
 
-              <a href="#" routerLink="/history"><i class="nav-link icon-header navbar-brand fa fa-phone-square fa-2x"></i></a>
+              <a href="#"><i class="nav-link icon-header navbar-brand fa fa-phone-square fa-2x"></i></a>
               <a href="#"><i class="nav-link icon-header navbar-brand fa fa-facebook fa-2x"></i></a>
               <a href="#"><i class="nav-link icon-header navbar-brand fa fa-twitter-square fa-2x"></i></a>
               <a href="#"><i class="nav-link icon-header navbar-brand fa fa-linkedin fa-2x"></i></a>
