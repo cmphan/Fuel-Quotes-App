@@ -18,7 +18,8 @@ namespace Fuel.API.Helpers
             CreateMap<ClientProfile, ClientProfileForDetailedDto>();
             CreateMap<ClientProfile,ProfileForReturnDto>();
             CreateMap<ProfileForCreationDto, ClientProfile>();
-             CreateMap<Quote,QuoteForDetailedDto>();
+            CreateMap<Quote,QuoteForDetailedDto>();
+            CreateMap<QuoteForDetailedDto,Quote>();
 
         }
     }

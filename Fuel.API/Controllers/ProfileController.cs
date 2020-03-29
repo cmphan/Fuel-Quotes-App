@@ -1,3 +1,4 @@
+using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -14,7 +15,7 @@ using Microsoft.Extensions.Options;
 namespace Fuel.API.Controllers
 {
     [Authorize]
-    [Route("api/users/{userName}/profile")]
+    [Route("api/users/{userName}")]
     [ApiController]
     public class ProfileController: ControllerBase
     {
@@ -43,7 +44,9 @@ namespace Fuel.API.Controllers
         //     var profile = _mapper.Map<ProfileForReturnDto>(profileFromRepo);
         //     return Ok(profile);
         // }
-        [HttpPost]
+        /*This function let users create/edit a new profile (corresponding to profile on from front-end)
+        and return the new created profile to front-end */
+        [HttpPost("profile")]
         public async Task<IActionResult> AddProfileForUser(string userName,[FromForm] ProfileForCreationDto profileForCreationDto)
         {
             var userFromRepo = await _repo.GetUser(userName);
@@ -74,5 +77,27 @@ namespace Fuel.API.Controllers
             }
             return BadRequest("Could not add the profile");
         }
+        /*This function generate a new quote (corresponding to quote form) */
+        [HttpPost("quote")]
+        public async Task<IActionResult> GenerateNewQuote(string username, [FromForm] QuoteForDetailedDto quoteForGenerationDto)
+        {
+            // Fetch user from user table with username
+            var userFromRepo = await _repo.GetUser(username);
+            // Call business login function from user repository to calculate the suggested price
+            var suggestedPrice = _repo.CalculatePrice(userFromRepo, quoteForGenerationDto);
+            // Assign & Map all values back to database
+            quoteForGenerationDto.SuggestedPrice = suggestedPrice;
+            quoteForGenerationDto.AmountDue = suggestedPrice * quoteForGenerationDto.GallonsRequested;
+            var newQuote = _mapper.Map<Quote>(quoteForGenerationDto);
+            userFromRepo.Quote.Add(newQuote);
+            // Save and return ok status &  the new quote if success
+            if (await _repo.SaveAll())
+            {
+                // return Ok(new {newQuote.SuggestedPrice, newQuote.AmountDue});
+                return Ok(new {newQuote.SuggestedPrice, newQuote.AmountDue});
+            }
+            return BadRequest("Could not generate quote");
+        }
+
     }
 }
