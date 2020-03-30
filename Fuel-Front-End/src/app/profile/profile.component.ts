@@ -12,6 +12,8 @@ import { AuthService } from '../_services/auth.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+  fileUploaded = false;
+  profilePicDefaultURL = 'http://ssl.gstatic.com/accounts/ui/avatar_2x.png';
   model: any = {};
   profileLocalStorage: any = {};
   userProfile: any = {};
@@ -60,6 +62,7 @@ export class ProfileComponent implements OnInit {
   }
     onFileSelected(event) {
     this.selectedFile = event.target.files[0];
+    this.fileUploaded = true;
   }
   clickEdit() {
     this.profileForm.enable();
@@ -68,7 +71,7 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userProfile.photoURL = "http://ssl.gstatic.com/accounts/ui/avatar_2x.png";
+    this.userProfile.photoURL = this.profilePicDefaultURL;
     this.route.data.subscribe(data => {
       // If there is data 
       if (Object.keys(data).length > 0)
@@ -83,6 +86,11 @@ export class ProfileComponent implements OnInit {
         this.userProfile.photoURL = data.user.clientProfile.photoURL;
         this.userService.profilePic(this.userProfile.photoURL);
         this.profileForm.disable();
+        if (this.userProfile.photoURL !== this.profilePicDefaultURL) {
+          this.fileUploaded = true;
+        } else {
+          this.fileUploaded = false;
+        }
       }
     });
   }

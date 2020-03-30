@@ -9,6 +9,7 @@ using Fuel.API.Dtos;
 using Fuel.API.Helpers;
 using Fuel.API.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 
@@ -50,11 +51,46 @@ namespace Fuel.API.Controllers
         public async Task<IActionResult> AddProfileForUser(string userName,[FromForm] ProfileForCreationDto profileForCreationDto)
         {
             var userFromRepo = await _repo.GetUser(userName);
+            // var file = profileForCreationDto.File;
+            // var uploadResult = new ImageUploadResult();
+            // if(file.Length>0)
+            // {
+            //     using (var stream = file.OpenReadStream())
+            //     {
+            //         var uploadParams = new ImageUploadParams()
+            //         {
+            //             File = new FileDescription(file.FileName, stream),
+            //             Transformation = new Transformation().Width(500).Height(500).Crop("fill").Gravity("face")
+            //         };
+            //         uploadResult = _cloudinary.Upload(uploadParams);
+            //     }
+            // }
+            //Check if client has any profile picture 
+            userFromRepo.ClientProfile.Fullname = profileForCreationDto.Fullname;
+            userFromRepo.ClientProfile.Address1 = profileForCreationDto.Address1;
+            userFromRepo.ClientProfile.Address2 = profileForCreationDto.Address2;
+            userFromRepo.ClientProfile.State = profileForCreationDto.State;
+            userFromRepo.ClientProfile.City = profileForCreationDto.City;
+            userFromRepo.ClientProfile.Zipcode = profileForCreationDto.Zipcode;
+            if (await _repo.SaveAll())
+            {
+                var profileToReturn = _mapper.Map<ProfileForReturnDto>(userFromRepo.ClientProfile);
+                // return CreatedAtRoute(nameof(GetProfile), new {id = 1}, profileToReturn);
+                return Ok(profileToReturn);
+            }
+            return BadRequest("Could not add the profile");
+        }
+        [HttpPost("photo")]
+        public async Task<IActionResult>UploadProfilePic(string username, [FromForm] ProfileForCreationDto profileForCreationDto)
+        {
+            //Fetch user from repo
+            var userFromRepo = await _repo.GetUser(username);
             var file = profileForCreationDto.File;
             var uploadResult = new ImageUploadResult();
-            if(file.Length>0)
+            // Upload profile pic to cloudinary using API 
+            if (file.Length>0)
             {
-                using (var stream = file.OpenReadStream())
+                 using (var stream = file.OpenReadStream())
                 {
                     var uploadParams = new ImageUploadParams()
                     {
@@ -64,18 +100,16 @@ namespace Fuel.API.Controllers
                     uploadResult = _cloudinary.Upload(uploadParams);
                 }
             }
+            // save return uploaded photo URL & publicId into user repo
             profileForCreationDto.PhotoURL = uploadResult.Uri.ToString();
             profileForCreationDto.PhotoPublicId = uploadResult.PublicId;
             var profile = _mapper.Map<ClientProfile>(profileForCreationDto);
             userFromRepo.ClientProfile = profile;
-            
             if (await _repo.SaveAll())
             {
-                var profileToReturn = _mapper.Map<ProfileForReturnDto>(profile);
-                // return CreatedAtRoute(nameof(GetProfile), new {id = 1}, profileToReturn);
-                return Ok(profileToReturn);
+                return Ok(new {userFromRepo.ClientProfile.PhotoURL});
             }
-            return BadRequest("Could not add the profile");
+            return BadRequest("Could not add profile photo");
         }
         /*This function generate a new quote (corresponding to quote form) */
         [HttpPost("quote")]

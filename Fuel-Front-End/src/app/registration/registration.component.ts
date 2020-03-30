@@ -30,10 +30,14 @@ export class RegistrationComponent implements OnInit {
     this.authService.register(this.model).subscribe(() => {
       this.registerSuccess = true;
       this.registerFailure = false;
-      this.router.navigateByUrl('/profile');
-      this.alertify.success('Resigter successfully');
-      // update login status after registered successfully
-      this.authService.checkLoginStatus(true);
+      this.authService.login(this.model).subscribe(() => {
+        this.router.navigate(['/profile', this.authService.decodedToken.unique_name]);
+        this.alertify.success('Resigter successfully');
+        // update login status after registered successfully
+        this.authService.checkLoginStatus(true);
+      }, error => {
+        console.log(error);
+      });
       // update the new registered username 
     }, error => {
       this.registerFailure = true;

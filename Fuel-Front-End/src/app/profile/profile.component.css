@@ -24,3 +24,6 @@
     height: 200px;
     border-radius: 50%;
 }
+input[type='file'] {
+    font-size: 13px;
+  }

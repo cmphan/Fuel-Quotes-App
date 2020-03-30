@@ -32,11 +32,10 @@
           <ul class="navbar-nav ml-auto">
 
             <li class="nav-item px-3 py-3">
-
               <a href="#" routerLink="/history"><i class="nav-link icon-header navbar-brand fa fa-phone-square fa-2x"></i></a>
               <a href="#"><i class="nav-link icon-header navbar-brand fa fa-facebook fa-2x"></i></a>
               <a href="#"><i class="nav-link icon-header navbar-brand fa fa-twitter-square fa-2x"></i></a>
-              <a href="#"><i class="nav-link icon-header navbar-brand fa fa-linkedin fa-2x"></i></a>
+              <a routerLink="/profile"><i class="nav-link icon-header navbar-brand fa fa-linkedin fa-2x"></i></a>
               <a [routerLink]= "['/profile', username]"  *ngIf="isLogin && !hasProfilePic" routerLink="/profile" href="#"><img class="profile-pic-nav" src="/assets/images/pro5.png" width="35" height="35"></a>
               <a [routerLink]= "['/profile', username]" *ngIf="isLogin && hasProfilePic" routerLink="/profile" href="#"><img class="profile-pic-nav" src="{{profilePicUrlUploaded}}" width="35" height="35"></a>
             </li>

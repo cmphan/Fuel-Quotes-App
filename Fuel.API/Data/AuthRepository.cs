@@ -53,6 +53,7 @@ namespace Fuel.API.Data
             EncryptPassword(password, out hashedPassword, out saltedPassword);
             user.PasswordHash = hashedPassword;
             user.PasswordSalt = saltedPassword;
+            user.DateCreated = DateTime.Now;
             //Update user object in database 
             await _context.Users.AddAsync(user);
             await _context.SaveChangesAsync();
