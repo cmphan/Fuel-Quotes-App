@@ -22,6 +22,8 @@ export class QuotesPageComponent implements OnInit {
               location.onPopState(() => { 
                 // Detect a backward click on brower and change status to log out 
                 this.authService.checkLoginStatus(false);
+                localStorage.removeItem('token');
+                this.router.navigateByUrl('/home');
               });
                }
   profile: ClientProfile;
@@ -57,7 +59,8 @@ export class QuotesPageComponent implements OnInit {
       console.log(data.user);
       this.user = data.user;
       this.newQuote.fullname = this.user.clientProfile.fullname;
-      this.newQuote.address1 = this.user.clientProfile.address1;
+      this.newQuote.address1 = this.user.clientProfile.address1 + ', ' +
+      this.user.clientProfile.city + ', ' + this.user.clientProfile.state + ' ' +  this.user.clientProfile.zipcode;
       this.userService.profilePic(this.user.clientProfile.photoURL);
       this.userService.isSetPicProfile(true);
       this.getFullName();

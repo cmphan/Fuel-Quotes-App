@@ -10,14 +10,14 @@
             <li class="nav-item px-3 py-2">
               <a  routerLink="/home" class="nav-link m-2 menu-item" href="#top">Home</a>
             </li>
-            <li class="nav-item px-3 py-2">
+            <li *ngIf="!isLogin" class="nav-item px-3 py-2">
               <a routerLink="/about" class="nav-link m-2 menu-item" href="#about">About Us</a>
+            </li>
+            <li *ngIf="isLogin" class="nav-item px-3 py-2">
+              <a [routerLink]="['/profile', username]" class="nav-link m-2 menu-item" href="#about">Profile</a>
             </li>
             <li *ngIf="!isLogin" class="nav-item px-3 py-2">
               <a routerLink="/login"class="nav-link m-2 menu-item" href="#projects">Login</a>
-            </li>
-            <li *ngIf="isLogin" class="nav-item px-3 py-2">
-              <a (click)="logout()" routerLink="/home" class="nav-link m-2 menu-item" href="#projects">Logout</a>
             </li>
             <li *ngIf="!isLogin" class="nav-item px-3 py-2">
               <a routerLink="/register" class="nav-link m-2 menu-item" href="#gallery">Register</a>
@@ -28,16 +28,18 @@
             <li class="nav-item px-3 py-2">
               <a routerLink="/contact" class="nav-link m-2 menu-item" href="#contact">Contact Us</a>
             </li>
+            <li *ngIf="isLogin" class="nav-item px-3 py-2">
+              <a (click)="logout()" routerLink="/home" class="nav-link m-2 menu-item" href="#projects">Logout</a>
+            </li>
           </ul>
           <ul class="navbar-nav ml-auto">
-
             <li class="nav-item px-3 py-3">
-              <a href="#" routerLink="/history"><i class="nav-link icon-header navbar-brand fa fa-phone-square fa-2x"></i></a>
+              <a href="#"><i class="nav-link icon-header navbar-brand fa fa-phone-square fa-2x"></i></a>
               <a href="#"><i class="nav-link icon-header navbar-brand fa fa-facebook fa-2x"></i></a>
               <a href="#"><i class="nav-link icon-header navbar-brand fa fa-twitter-square fa-2x"></i></a>
               <a routerLink="/profile"><i class="nav-link icon-header navbar-brand fa fa-linkedin fa-2x"></i></a>
-              <a [routerLink]= "['/profile', username]"  *ngIf="isLogin && !hasProfilePic" routerLink="/profile" href="#"><img class="profile-pic-nav" src="/assets/images/pro5.png" width="35" height="35"></a>
-              <a [routerLink]= "['/profile', username]" *ngIf="isLogin && hasProfilePic" routerLink="/profile" href="#"><img class="profile-pic-nav" src="{{profilePicUrlUploaded}}" width="35" height="35"></a>
+              <a *ngIf="isLogin && !hasProfilePic" routerLink="/profile" href="#"><img class="profile-pic-nav" src="/assets/images/pro5.png" width="35" height="35"></a>
+              <a *ngIf="isLogin && hasProfilePic" routerLink="/profile" href="#"><img class="profile-pic-nav" src="{{profilePicUrlUploaded}}" width="35" height="35"></a>
             </li>
           </ul>
     </div>

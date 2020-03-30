@@ -7,6 +7,7 @@ import { UserService } from '../_services/user.service';
 import {map} from 'rxjs/operators';
 import { AuthService } from '../_services/auth.service';
 import { environment } from 'src/environments/environment';
+import { PlatformLocation } from '@angular/common';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -35,14 +36,18 @@ export class ProfileComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private userService: UserService,
               private alertify: AlertifyService, private router: Router,
               private authService: AuthService, private route: ActivatedRoute,
-              private http: HttpClient) {
+              private http: HttpClient, private location: PlatformLocation) {
+    location.onPopState(()=> {
+      this.authService.checkLoginStatus(false);
+      localStorage.removeItem('token');
+    });
     this.profileForm = this.formBuilder.group({
-      fullname: ['', [Validators.required, Validators.pattern('^[a-zA-Z \-\']+')]],
-      address1: ['', [Validators.required]],
-      address2: [''],
-      city: ['', [Validators.required, Validators.pattern('^[a-zA-Z \-\']+')]],
-      state: ['', [Validators.required]],
-      zipcode: ['', [Validators.required, Validators.pattern('[0-9]{5}')]],
+    fullname: ['', [Validators.required, Validators.pattern('^[a-zA-Z \-\']+')]],
+    address1: ['', [Validators.required]],
+    address2: [''],
+    city: ['', [Validators.required, Validators.pattern('^[a-zA-Z \-\']+')]],
+    state: ['', [Validators.required]],
+    zipcode: ['', [Validators.required, Validators.pattern('[0-9]{5}')]],
 
     });
   }
@@ -65,7 +70,6 @@ export class ProfileComponent implements OnInit {
     this.profileForm.markAllAsTouched();
     this.profile();
     this.profileCompleted = true;
-    this.userService.isSetPicProfile(true);
     this.alertify.success('Profile save successfully');
     this.isEdit = true;
     this.isNewUser = false;
@@ -77,6 +81,7 @@ export class ProfileComponent implements OnInit {
     .subscribe (res => {
       this.userProfile.photoURL = res['photoURL'];
       this.userService.profilePic(this.userProfile.photoURL);
+      this.userService.isSetPicProfile(true);
 
     });
   }
@@ -97,9 +102,11 @@ export class ProfileComponent implements OnInit {
         {
           console.log("new user");
         } else { 
-        this.userProfile.photoURL = data.user.clientProfile.photoURL;
-        if (data.user.clientProfile['fullname'] !== null)
-        {
+        if (data.user.clientProfile['photoURL'] == null) {
+          this.userProfile.photoURL = this.profilePicDefaultURL;
+        }  else { 
+        this.userProfile.photoURL = data.user.clientProfile.photoURL; }
+        if (data.user.clientProfile['fullname'] !== null) {
           this.isNewUser = false;
           this.userProfile.dateCreated = data.user.dateCreated;
           this.userProfile.fullname = data.user.clientProfile.fullname;
