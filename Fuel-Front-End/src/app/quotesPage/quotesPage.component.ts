@@ -54,6 +54,8 @@ export class QuotesPageComponent implements OnInit {
       this.user = data.user;
       this.newQuote.fullname = this.user.clientProfile.fullname;
       this.newQuote.address1 = this.user.clientProfile.address1;
+      this.userService.profilePic(this.user.clientProfile.photoURL);
+      this.userService.isSetPicProfile(true);
     });
 
   }

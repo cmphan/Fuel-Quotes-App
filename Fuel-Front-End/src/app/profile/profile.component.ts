@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { AlertifyService } from '../_services/alertify.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { UserService } from '../_services/user.service';
 import {map} from 'rxjs/operators';
@@ -14,6 +14,7 @@ import { AuthService } from '../_services/auth.service';
 export class ProfileComponent implements OnInit {
   model: any = {};
   profileLocalStorage: any = {};
+  userProfile: any = {};
   profileCompleted: boolean;
   profileForm: FormGroup;
   fd = new FormData();
@@ -21,7 +22,7 @@ export class ProfileComponent implements OnInit {
   isEdit = false;
   constructor(private formBuilder: FormBuilder, private userService: UserService,
               private alertify: AlertifyService, private router: Router,
-              private authService: AuthService,
+              private authService: AuthService, private route: ActivatedRoute,
               private http: HttpClient) {
     this.profileForm = this.formBuilder.group({
       fullname: ['', [Validators.required]],
@@ -42,25 +43,6 @@ export class ProfileComponent implements OnInit {
     }
     );
   }
-  getProfile() {
-    this.profileLocalStorage.fullname = localStorage.getItem('fullname');
-    this.profileLocalStorage.address1 = localStorage.getItem('address1');
-    this.profileLocalStorage.address2 = localStorage.getItem('address2');
-    this.profileLocalStorage.city = localStorage.getItem('city');
-    this.profileLocalStorage.state = localStorage.getItem('state');
-    this.profileLocalStorage.zipcode = localStorage.getItem('zipcode');
-    this.profileLocalStorage.photoURL = localStorage.getItem('photoURL');
-    this.userService.profilePic(this.profileLocalStorage.photoURL);
-    this.isEdit = true;
-    this.profileForm.disable();
-    localStorage.removeItem('fullname');
-    localStorage.removeItem('address1');
-    localStorage.removeItem('address2');
-    localStorage.removeItem('city');
-    localStorage.removeItem('state');
-    localStorage.removeItem('zipcode');
-    localStorage.removeItem('photoURL');
-  }
   onSubmit() {
     this.fd.append('File', this.selectedFile, this.selectedFile.name);
     this.fd.append('fullname', this.profileForm.value.fullname);
@@ -71,9 +53,10 @@ export class ProfileComponent implements OnInit {
     this.fd.append('zipcode', this.profileForm.value.zipcode);
     this.profileForm.markAllAsTouched();
     this.profile();
-    this.getProfile();
     this.profileCompleted = true;
     this.userService.isSetPicProfile(true);
+    this.alertify.success('Profile save successfully');
+    this.isEdit = true;
   }
     onFileSelected(event) {
     this.selectedFile = event.target.files[0];
@@ -85,5 +68,22 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.userProfile.photoURL = "http://ssl.gstatic.com/accounts/ui/avatar_2x.png";
+    this.route.data.subscribe(data => {
+      // If there is data 
+      if (Object.keys(data).length > 0)
+      {
+        // If there is a profile associated with user
+        this.userProfile.fullname = data.user.clientProfile.fullname;
+        this.userProfile.address1 = data.user.clientProfile.address1;
+        this.userProfile.address2 = data.user.clientProfile.address2;
+        this.userProfile.city = data.user.clientProfile.city;
+        this.userProfile.zipcode = data.user.clientProfile.zipcode;
+        this.userProfile.state = data.user.clientProfile.state;
+        this.userProfile.photoURL = data.user.clientProfile.photoURL;
+        this.userService.profilePic(this.userProfile.photoURL);
+        this.profileForm.disable();
+      }
+    });
   }
 }

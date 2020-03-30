@@ -26,16 +26,6 @@ createProfile(username: string, model: any) {
   pipe(
     map((response: any) => {
       this.profile = response;
-      // If response object is not empty 
-      if (Object.keys(this.profile).length > 0) {
-        localStorage.setItem('fullname', this.profile.fullname);
-        localStorage.setItem('address1', this.profile.address1);
-        localStorage.setItem('address2', this.profile.address2);
-        localStorage.setItem('city', this.profile.city);
-        localStorage.setItem('state', this.profile.state);
-        localStorage.setItem('zipcode', this.profile.zipcode);
-        localStorage.setItem('photoURL', this.profile.photoURL);
-      }
     }));
 }
 getQuote(username: string, model: any) {

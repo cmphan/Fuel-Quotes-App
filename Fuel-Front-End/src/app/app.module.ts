@@ -38,7 +38,7 @@ const appRoutes: Routes =[
    {path:'login', component:LoginComponent},
    {path:'register', component:RegistrationComponent},
    {path:'quote/:username', component:QuotesPageComponent, resolve: {user: UserDetailResolver}, canActivate: [AuthGuard]},
-   {path:'profile', component:ProfileComponent},
+   {path:'profile/:username', component:ProfileComponent, resolve: {user: UserDetailResolver}},
    {path:'home', component:Home_pageComponent},
    {path: '',component:Home_pageComponent},
    // Random route redirect to homepage
