@@ -11,10 +11,6 @@
         <img src="{{ this.userProfile.photoURL}}" class="avatar img-circle img-thumbnail avatar-pic" alt="avatar">
         <h6>Profile Picture</h6>
         <div>
-          <div *ngIf="!fileUploaded" style="font-size: 0.8em; padding-right: 10px;">
-            <i class="fa fa-times-circle" style="color: firebrick;"></i>
-            <span class="text-danger bg-light">Please upload a profile picture</span>
-          </div>
         <input type="file" (change)="onFileSelected($event)" class="text-center center-block file-upload"/>
       </div>
       </div><br>
@@ -22,10 +18,10 @@
           </div>
           <ul class="list-group">
             <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong>Shares</strong></span> 125</li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong>Likes</strong></span> 13</li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong>Posts</strong></span> 37</li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong>Followers</strong></span> 78</li>
+            <li class="list-group-item text-dark"><span class="pull-left"><strong>Date Account Created</strong></span> {{this.userProfile.dateCreated}}</li>
+            <li class="list-group-item text-dark"><span class="pull-left"><strong>Likes</strong></span> 13</li>
+            <li class="list-group-item text-dark"><span class="pull-left"><strong>Posts</strong></span> 37</li>
+            <li class="list-group-item text-dark"><span class="pull-left"><strong>Followers</strong></span> 78</li>
           </ul> 
           <div class="panel panel-default">
             <div class="panel-heading">Social Media</div>
@@ -156,7 +152,7 @@
                       <div class="form-group">
                            <div class="col-12">
                                 <br>
-                                <button [disabled]="!profileForm.valid || !fileUploaded" (click)="onSubmit()" class="btn btn-lg btn-success mx-2" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
+                                <button [disabled]="!profileForm.valid" (click)="onSubmit()" class="btn btn-lg btn-success mx-2" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
                                 <button (click)="clickEdit()" class="btn btn-lg btn-success mx-2" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Edit</button>
                                  <button class="btn btn-lg btn-dark mx-2" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
                             </div>

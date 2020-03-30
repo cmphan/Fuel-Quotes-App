@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../_services/auth.service';
 import { UserService } from '../_services/user.service';
 import { ClientProfile } from '../_models/clientProfile';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../_models/user';
 import { Quote } from '../_models/quote';
 import { AlertifyService } from '../_services/alertify.service';
@@ -17,7 +17,8 @@ export class QuotesPageComponent implements OnInit {
               private userService: UserService,
               private alertify: AlertifyService,
               private route: ActivatedRoute,
-              private location: PlatformLocation) {
+              private location: PlatformLocation,
+              private router: Router) {
               location.onPopState(() => { 
                 // Detect a backward click on brower and change status to log out 
                 this.authService.checkLoginStatus(false);
@@ -34,7 +35,6 @@ export class QuotesPageComponent implements OnInit {
   getFullName() {
     return this.newQuote.fullname;
   }
-  
   getQuote() {
     this.newQuoteForm.append('GallonsRequested', this.newQuote.gallon);
     this.newQuoteForm.append('DeliveryAddress', this.newQuote.address1);
@@ -51,13 +51,20 @@ export class QuotesPageComponent implements OnInit {
   }
   ngOnInit() {
       this.route.data.subscribe(data => {
+        // if client profile is empty => new user => redirect to client profile to complete
+        // before they can start the first quote
+      if (data.user['clientProfile'] !== null) {
+      console.log(data.user);
       this.user = data.user;
       this.newQuote.fullname = this.user.clientProfile.fullname;
       this.newQuote.address1 = this.user.clientProfile.address1;
       this.userService.profilePic(this.user.clientProfile.photoURL);
       this.userService.isSetPicProfile(true);
+      this.getFullName();
+      } else {
+        this.router.navigate(['/profile', this.authService.decodedToken.unique_name]);
+       }
     });
-
   }
 
 }

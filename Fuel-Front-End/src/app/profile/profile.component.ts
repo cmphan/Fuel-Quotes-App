@@ -6,13 +6,13 @@ import { HttpClient } from '@angular/common/http';
 import { UserService } from '../_services/user.service';
 import {map} from 'rxjs/operators';
 import { AuthService } from '../_services/auth.service';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  fileUploaded = false;
   profilePicDefaultURL = 'http://ssl.gstatic.com/accounts/ui/avatar_2x.png';
   model: any = {};
   profileLocalStorage: any = {};
@@ -46,7 +46,6 @@ export class ProfileComponent implements OnInit {
     );
   }
   onSubmit() {
-    this.fd.append('File', this.selectedFile, this.selectedFile.name);
     this.fd.append('fullname', this.profileForm.value.fullname);
     this.fd.append('address1', this.profileForm.value.address1);
     this.fd.append('address2', this.profileForm.value.address2);
@@ -62,7 +61,13 @@ export class ProfileComponent implements OnInit {
   }
     onFileSelected(event) {
     this.selectedFile = event.target.files[0];
-    this.fileUploaded = true;
+    this.fd.append('File', this.selectedFile, this.selectedFile.name);
+    this.http.post(environment.apiURL + 'users/' + this.authService.decodedToken.unique_name + '/photo', this.fd)
+    .subscribe (res => {
+      this.userProfile.photoURL = res['photoURL'];
+      this.userService.profilePic(this.userProfile.photoURL);
+
+    });
   }
   clickEdit() {
     this.profileForm.enable();
@@ -73,10 +78,15 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     this.userProfile.photoURL = this.profilePicDefaultURL;
     this.route.data.subscribe(data => {
-      // If there is data 
-      if (Object.keys(data).length > 0)
+      // Check if there is data comes back
+      if (data.user.clientProfile === null){
+        console.log('new user');
+      } else
+      // If there is data
       {
+        console.log(data.user);
         // If there is a profile associated with user
+        this.userProfile.dateCreated = data.user.clientProfile.dateCreated;
         this.userProfile.fullname = data.user.clientProfile.fullname;
         this.userProfile.address1 = data.user.clientProfile.address1;
         this.userProfile.address2 = data.user.clientProfile.address2;
@@ -86,11 +96,6 @@ export class ProfileComponent implements OnInit {
         this.userProfile.photoURL = data.user.clientProfile.photoURL;
         this.userService.profilePic(this.userProfile.photoURL);
         this.profileForm.disable();
-        if (this.userProfile.photoURL !== this.profilePicDefaultURL) {
-          this.fileUploaded = true;
-        } else {
-          this.fileUploaded = false;
-        }
       }
     });
   }
