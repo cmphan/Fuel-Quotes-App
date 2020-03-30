@@ -16,10 +16,20 @@ export class ProfileComponent implements OnInit {
   profilePicDefaultURL = 'http://ssl.gstatic.com/accounts/ui/avatar_2x.png';
   model: any = {};
   profileLocalStorage: any = {};
-  userProfile: any = {};
+  userProfile: any = {
+    dateCreated: '',
+    fullname: '',
+    address1: '',
+    address2: '',
+    city: '',
+    state: '',
+    zipcode: '',
+    Quotes: []
+  };
   profileCompleted: boolean;
   profileForm: FormGroup;
   fd = new FormData();
+  isNewUser = true;
   selectedFile: File = null;
   isEdit = false;
   constructor(private formBuilder: FormBuilder, private userService: UserService,
@@ -58,6 +68,7 @@ export class ProfileComponent implements OnInit {
     this.userService.isSetPicProfile(true);
     this.alertify.success('Profile save successfully');
     this.isEdit = true;
+    this.isNewUser = false;
   }
     onFileSelected(event) {
     this.selectedFile = event.target.files[0];
@@ -74,29 +85,35 @@ export class ProfileComponent implements OnInit {
     this.profileForm.markAsUntouched();
     this.isEdit = false;
   }
+  startNewQuote(){
+    this.router.navigate(['/quote', this.authService.decodedToken.unique_name]);
+  }
 
   ngOnInit() {
     this.userProfile.photoURL = this.profilePicDefaultURL;
     this.route.data.subscribe(data => {
-      // Check if there is data comes back
-      if (data.user.clientProfile === null){
-        console.log('new user');
-      } else
-      // If there is data
-      {
-        console.log(data.user);
         // If there is a profile associated with user
-        this.userProfile.dateCreated = data.user.clientProfile.dateCreated;
-        this.userProfile.fullname = data.user.clientProfile.fullname;
-        this.userProfile.address1 = data.user.clientProfile.address1;
-        this.userProfile.address2 = data.user.clientProfile.address2;
-        this.userProfile.city = data.user.clientProfile.city;
-        this.userProfile.zipcode = data.user.clientProfile.zipcode;
-        this.userProfile.state = data.user.clientProfile.state;
+        if (data.user['clientProfile'] == null || data.user == null)
+        {
+          console.log("new user");
+        } else { 
         this.userProfile.photoURL = data.user.clientProfile.photoURL;
-        this.userService.profilePic(this.userProfile.photoURL);
-        this.profileForm.disable();
+        if (data.user.clientProfile['fullname'] !== null)
+        {
+          this.isNewUser = false;
+          this.userProfile.dateCreated = data.user.dateCreated;
+          this.userProfile.fullname = data.user.clientProfile.fullname;
+          this.userProfile.address1 = data.user.clientProfile.address1;
+          this.userProfile.address2 = data.user.clientProfile.address2;
+          this.userProfile.city = data.user.clientProfile.city;
+          this.userProfile.zipcode = data.user.clientProfile.zipcode;
+          this.userProfile.state = data.user.clientProfile.state;
+          this.userProfile.Quotes = data.user['quote'];
+          console.log(this.userProfile.Quotes);
+          this.userService.profilePic(this.userProfile.photoURL);
+          this.profileForm.disable();
+        }
       }
-    });
+      });
+    };
   }
-}

@@ -18,17 +18,12 @@
           </div>
           <ul class="list-group">
             <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>
-            <li class="list-group-item text-dark"><span class="pull-left"><strong>Date Account Created</strong></span> {{this.userProfile.dateCreated}}</li>
-            <li class="list-group-item text-dark"><span class="pull-left"><strong>Likes</strong></span> 13</li>
-            <li class="list-group-item text-dark"><span class="pull-left"><strong>Posts</strong></span> 37</li>
-            <li class="list-group-item text-dark"><span class="pull-left"><strong>Followers</strong></span> 78</li>
+            <li class="list-group-item text-white bg-info"><span class="pull-left"><strong>Date Account Created: </strong></span></li>
+            <li class="list-group-item text-dark bg-light"><span class="pull-left">{{this.userProfile.dateCreated}}</span></li>
+            <li class="list-group-item text-white bg-info"><span class="pull-left"><strong>#Previous Quotes: </strong></span>{{this.userProfile.Quotes.length}}</li>
+            <li class="list-group-item text-white"><button [disabled] ="this.isNewUser" (click)="startNewQuote()" style= "width: 300px;" class="btn btn-lg btn-info m-2" type="submit"> Start A New Quote</button>
+            </li>
           </ul> 
-          <div class="panel panel-default">
-            <div class="panel-heading">Social Media</div>
-            <div class="panel-body">
-            	<i class="fa fa-facebook fa-2x px-2"></i> <i class="fa fa-github fa-2x px-2"></i> <i class="fa fa-twitter fa-2x px-2"></i> <i class="fa fa-pinterest fa-2x px-2"></i> <i class="fa fa-google-plus fa-2x px-2"></i>
-            </div>
-          </div>
         </div><!--/col-3-->
     	<div class="col-sm-9">
           <div class="tab-content">

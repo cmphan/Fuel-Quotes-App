@@ -51,27 +51,15 @@ namespace Fuel.API.Controllers
         public async Task<IActionResult> AddProfileForUser(string userName,[FromForm] ProfileForCreationDto profileForCreationDto)
         {
             var userFromRepo = await _repo.GetUser(userName);
-            // var file = profileForCreationDto.File;
-            // var uploadResult = new ImageUploadResult();
-            // if(file.Length>0)
-            // {
-            //     using (var stream = file.OpenReadStream())
-            //     {
-            //         var uploadParams = new ImageUploadParams()
-            //         {
-            //             File = new FileDescription(file.FileName, stream),
-            //             Transformation = new Transformation().Width(500).Height(500).Crop("fill").Gravity("face")
-            //         };
-            //         uploadResult = _cloudinary.Upload(uploadParams);
-            //     }
-            // }
-            //Check if client has any profile picture 
-            userFromRepo.ClientProfile.Fullname = profileForCreationDto.Fullname;
-            userFromRepo.ClientProfile.Address1 = profileForCreationDto.Address1;
-            userFromRepo.ClientProfile.Address2 = profileForCreationDto.Address2;
-            userFromRepo.ClientProfile.State = profileForCreationDto.State;
-            userFromRepo.ClientProfile.City = profileForCreationDto.City;
-            userFromRepo.ClientProfile.Zipcode = profileForCreationDto.Zipcode;
+            var profileToInsert = new ClientProfile() {
+                Fullname = profileForCreationDto.Fullname,
+                Address1 = profileForCreationDto.Address1,
+                Address2 = profileForCreationDto.Address2,
+                State = profileForCreationDto.State,
+                City = profileForCreationDto.City,
+                Zipcode = profileForCreationDto.Zipcode
+            };
+            userFromRepo.ClientProfile = profileToInsert;
             if (await _repo.SaveAll())
             {
                 var profileToReturn = _mapper.Map<ProfileForReturnDto>(userFromRepo.ClientProfile);
