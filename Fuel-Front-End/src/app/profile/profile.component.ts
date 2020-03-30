@@ -37,12 +37,12 @@ export class ProfileComponent implements OnInit {
               private authService: AuthService, private route: ActivatedRoute,
               private http: HttpClient) {
     this.profileForm = this.formBuilder.group({
-      fullname: ['', [Validators.required]],
+      fullname: ['', [Validators.required, Validators.pattern('^[a-zA-Z \-\']+')]],
       address1: ['', [Validators.required]],
       address2: [''],
-      city: ['', [Validators.required]],
+      city: ['', [Validators.required, Validators.pattern('^[a-zA-Z \-\']+')]],
       state: ['', [Validators.required]],
-      zipcode: ['', [Validators.required]],
+      zipcode: ['', [Validators.required, Validators.pattern('[0-9]{5}')]],
 
     });
   }
