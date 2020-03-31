@@ -52,8 +52,8 @@ namespace Fuel.API.Controllers
         {
             var userFromRepo = await _repo.GetUser(userName);
             var profileToInsert = new ClientProfile();
-            // Check if user has profile pic => if not just map 
-            if (userFromRepo.ClientProfile.PhotoURL == null) 
+            // If first time user (no profile) => just map
+            if (userFromRepo.ClientProfile  == null) 
             {
                 profileToInsert = _mapper.Map<ClientProfile>(profileForCreationDto);
             }
@@ -102,13 +102,9 @@ namespace Fuel.API.Controllers
             profileForCreationDto.PhotoURL = uploadResult.Uri.ToString();
             profileForCreationDto.PhotoPublicId = uploadResult.PublicId;
             var profile = new ClientProfile();
-            // If user profile is empty (first time users) => update other fields because user is trying to complete their profile
-            if(userFromRepo.ClientProfile.Fullname == null)
+            // If user has profile already => keep other field values
+            if(userFromRepo.ClientProfile != null)
             {
-                profile = _mapper.Map<ClientProfile>(profileForCreationDto);
-            }
-            // User profile is not empty => user only tries to edit their profile photo => keep everything the same because the only change is profile pic
-            else {
                 profile.Fullname = userFromRepo.ClientProfile.Fullname;
                 profile.Address1 = userFromRepo.ClientProfile.Address1;
                 profile.Address2 = userFromRepo.ClientProfile.Address2;
@@ -116,6 +112,7 @@ namespace Fuel.API.Controllers
                 profile.State = userFromRepo.ClientProfile.State;
                 profile.Zipcode = userFromRepo.ClientProfile.Zipcode;
             }
+            // User profile is not empty => user only tries to edit their profile photo => keep everything the same because the only change is profile pic
             profile.PhotoPublicId = profileForCreationDto.PhotoPublicId;
             profile.PhotoURL = profileForCreationDto.PhotoURL;
             userFromRepo.ClientProfile = profile;
