@@ -51,14 +51,24 @@ namespace Fuel.API.Controllers
         public async Task<IActionResult> AddProfileForUser(string userName,[FromForm] ProfileForCreationDto profileForCreationDto)
         {
             var userFromRepo = await _repo.GetUser(userName);
-            var profileToInsert = new ClientProfile() {
-                Fullname = profileForCreationDto.Fullname,
-                Address1 = profileForCreationDto.Address1,
-                Address2 = profileForCreationDto.Address2,
-                State = profileForCreationDto.State,
-                City = profileForCreationDto.City,
-                Zipcode = profileForCreationDto.Zipcode
-            };
+            var profileToInsert = new ClientProfile();
+            // Check if user has profile pic => if not just map 
+            if (userFromRepo.ClientProfile.PhotoURL == null) 
+            {
+                profileToInsert = _mapper.Map<ClientProfile>(profileForCreationDto);
+            }
+            // User has profile pic => map manually to avoid losing photo URL 
+            else 
+            {
+                profileToInsert.Fullname = profileForCreationDto.Fullname;
+                profileToInsert.Address1 = profileForCreationDto.Address1;
+                profileToInsert.Address2 = profileForCreationDto.Address2;
+                profileToInsert.State = profileForCreationDto.State;
+                profileToInsert.City = profileForCreationDto.City;
+                profileToInsert.Zipcode = profileForCreationDto.Zipcode;
+                profileToInsert.PhotoURL = userFromRepo.ClientProfile.PhotoURL;
+                profileToInsert.PhotoPublicId = userFromRepo.ClientProfile.PhotoPublicId;
+            }
             userFromRepo.ClientProfile = profileToInsert;
             if (await _repo.SaveAll())
             {
@@ -91,7 +101,23 @@ namespace Fuel.API.Controllers
             // save return uploaded photo URL & publicId into user repo
             profileForCreationDto.PhotoURL = uploadResult.Uri.ToString();
             profileForCreationDto.PhotoPublicId = uploadResult.PublicId;
-            var profile = _mapper.Map<ClientProfile>(profileForCreationDto);
+            var profile = new ClientProfile();
+            // If user profile is empty (first time users) => update other fields because user is trying to complete their profile
+            if(userFromRepo.ClientProfile.Fullname == null)
+            {
+                profile = _mapper.Map<ClientProfile>(profileForCreationDto);
+            }
+            // User profile is not empty => user only tries to edit their profile photo => keep everything the same because the only change is profile pic
+            else {
+                profile.Fullname = userFromRepo.ClientProfile.Fullname;
+                profile.Address1 = userFromRepo.ClientProfile.Address1;
+                profile.Address2 = userFromRepo.ClientProfile.Address2;
+                profile.City = userFromRepo.ClientProfile.City;
+                profile.State = userFromRepo.ClientProfile.State;
+                profile.Zipcode = userFromRepo.ClientProfile.Zipcode;
+            }
+            profile.PhotoPublicId = profileForCreationDto.PhotoPublicId;
+            profile.PhotoURL = profileForCreationDto.PhotoURL;
             userFromRepo.ClientProfile = profile;
             if (await _repo.SaveAll())
             {
