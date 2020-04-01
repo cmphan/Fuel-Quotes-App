@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -38,13 +39,6 @@ namespace Fuel.API.Controllers
             );
             _cloudinary = new Cloudinary(acc);
         }
-        // [HttpGet("{id}", Name="GetProfile")]
-        // public async Task<IActionResult> GetProfile(int id)
-        // {
-        //     var profileFromRepo = await _repo.GetProfile(id);
-        //     var profile = _mapper.Map<ProfileForReturnDto>(profileFromRepo);
-        //     return Ok(profile);
-        // }
         /*This function let users create/edit a new profile (corresponding to profile on from front-end)
         and return the new created profile to front-end */
         [HttpPost("profile")]
@@ -129,7 +123,17 @@ namespace Fuel.API.Controllers
             // Fetch user from user table with username
             var userFromRepo = await _repo.GetUser(username);
             // Call business login function from user repository to calculate the suggested price
-            var suggestedPrice = _repo.CalculatePrice(userFromRepo, quoteForGenerationDto);
+            var userProfileFromRepo = userFromRepo.ClientProfile;
+            bool hasQuoteBefore;
+            // Check if user has any quote
+            if (userFromRepo.Quote.Any(q => q.User.UserId == userFromRepo.UserId)) 
+            {
+                hasQuoteBefore = true;
+            }
+            else {
+                hasQuoteBefore = false;
+            }
+            var suggestedPrice = _repo.CalculatePrice(userProfileFromRepo, quoteForGenerationDto, hasQuoteBefore);
             // Assign & Map all values back to database
             quoteForGenerationDto.SuggestedPrice = suggestedPrice;
             quoteForGenerationDto.AmountDue = suggestedPrice * quoteForGenerationDto.GallonsRequested;

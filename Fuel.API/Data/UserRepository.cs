@@ -16,6 +16,7 @@ namespace Fuel.API.Data
         {
             _context = context;
         }
+        public UserRepository(){}
         public void Add<T>(T entity) where T : class
         {
             _context.Add(entity);
@@ -34,7 +35,7 @@ Gallons Requested Factor = 2% if more than 1000 Gallons, 3% if less
 Company Profit Factor = 10% always
 Rate Fluctuation = 4% for summer, 3% otherwise 
 */
-        public double CalculatePrice(User userFromRepo, QuoteForDetailedDto quoteForGenerationDto)
+        public double CalculatePrice(ClientProfile userProfileFromRepo, QuoteForDetailedDto quoteForGenerationDto, bool hasQuoteBefore)
         {
             const double currentPricePerGallon = 1.5;
             double locationFactor = 0.04;
@@ -43,12 +44,12 @@ Rate Fluctuation = 4% for summer, 3% otherwise
             double fluctuationRate = 0.03;
             double companyProfit = 0.1;
             // Check Location Factor. If Texas = 0.02, out of state = 0.04 
-            if (userFromRepo.ClientProfile.State == "TX" || userFromRepo.ClientProfile.State == "Texas")
+            if (userProfileFromRepo.State == "TX" || userProfileFromRepo.State == "Texas")
             {
                 locationFactor = 0.02; 
             }
-            // Check if client request quotes before 
-            if (userFromRepo.Quote.Any(q => q.User.UserId == userFromRepo.UserId))
+            // if user has quote before.
+            if (hasQuoteBefore)
             {
                 rateHistory = 0.01;
             }
@@ -66,6 +67,8 @@ Rate Fluctuation = 4% for summer, 3% otherwise
             //Calulate based on provided formula
             var margin = currentPricePerGallon * (locationFactor - rateHistory + gallonsRequestedFactor + companyProfit + fluctuationRate);
             var suggestedPrice = currentPricePerGallon + margin;
+            // Round the prices 7 decimals place
+            suggestedPrice = Math.Round(suggestedPrice,7, MidpointRounding.AwayFromZero);
             return suggestedPrice;
         }
         // Check if the delivery date is in summertime of 2020 (June 20 - Sep 22)

@@ -2,6 +2,7 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using Fuel.API.Models;
 using Fuel.API.Dtos;
+using System;
 
 namespace Fuel.API.Data
 {
@@ -13,6 +14,6 @@ namespace Fuel.API.Data
          Task<IEnumerable<User>> GetUsers();
          Task<User> GetUser(string username);
          Task<ClientProfile> GetProfile(int id);
-         double CalculatePrice(User userFromRepo, QuoteForDetailedDto quoteForGenerationDto);
+         double CalculatePrice(ClientProfile userProfileFromRepo, QuoteForDetailedDto quoteForGenerationDto, bool hasQuoteBefore);
     }
 }
