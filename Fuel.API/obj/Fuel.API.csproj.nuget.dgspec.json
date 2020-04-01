@@ -47,6 +47,10 @@
               "target": "Package",
               "version": "[1.8.0, )"
             },
+            "FluentAssertions": {
+              "target": "Package",
+              "version": "[5.10.3, )"
+            },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
               "version": "[3.0.0, )"
@@ -74,6 +78,10 @@
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
               "version": "[16.5.0, )"
+            },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.13.1, )"
             },
             "NUnit": {
               "target": "Package",
