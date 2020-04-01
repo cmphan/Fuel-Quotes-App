@@ -23,21 +23,22 @@ namespace Fuel.API.Controllers
     {
         private readonly IUserRepository _repo;
         private readonly IMapper _mapper;
-        private readonly IOptions<CloudinarySettings> _cloudinaryConfig;
-        private Cloudinary _cloudinary;
+        // private readonly IOptions<CloudinarySettings> _cloudinaryConfig;
+        // private Cloudinary _cloudinary;
+        private readonly IPhotoUploadService _photoService;
 
-        public ProfileController(IUserRepository repo, IMapper mapper,
-        IOptions<CloudinarySettings> cloudinaryConfig)
+        public ProfileController(IUserRepository repo, IMapper mapper,IPhotoUploadService photoService)
         {
-            _cloudinaryConfig = cloudinaryConfig;
+            // _cloudinaryConfig = cloudinaryConfig;
             _mapper = mapper;
             _repo = repo;
-            Account acc = new Account (
-                _cloudinaryConfig.Value.CloudName,
-                _cloudinaryConfig.Value.ApiKey,
-                _cloudinaryConfig.Value.ApiSecret
-            );
-            _cloudinary = new Cloudinary(acc);
+            _photoService = photoService;
+            // Account acc = new Account (
+            //     _cloudinaryConfig.Value.CloudName,
+            //     _cloudinaryConfig.Value.ApiKey,
+            //     _cloudinaryConfig.Value.ApiSecret
+            // );
+            // _cloudinary = new Cloudinary(acc);
         }
         /*This function let users create/edit a new profile (corresponding to profile on from front-end)
         and return the new created profile to front-end */
@@ -89,7 +90,7 @@ namespace Fuel.API.Controllers
                         File = new FileDescription(file.FileName, stream),
                         Transformation = new Transformation().Width(500).Height(500).Crop("fill").Gravity("face")
                     };
-                    uploadResult = _cloudinary.Upload(uploadParams);
+                    uploadResult = _photoService.GetCloudinaryService().Upload(uploadParams);
                 }
             }
             // save return uploaded photo URL & publicId into user repo
