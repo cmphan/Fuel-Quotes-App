@@ -24,14 +24,16 @@ namespace Fuel.API.UnitTest
             //Arrange: create concrete dependency injection and an instance of UsersController 
             Mock<IUserRepository> mockIUserRepository = new Mock<IUserRepository>();
             Mock<IMapper> mockIMapper = new Mock<IMapper>();
-            mockIUserRepository.Setup(user_repo => user_repo.GetUsers()).ReturnsAsync(GetUsers());
-            mockIMapper.Setup(_mapper => _mapper.Map<IEnumerable<UserForListDto>>(GetUsers()));
+            mockIUserRepository.Setup(user_repo => user_repo.GetUsers()).Returns(Task.FromResult((GetUsers())));
+            mockIMapper.Setup(_mapper => _mapper.Map<IEnumerable<UserForListDto>>(It.IsAny<IEnumerable<User>>()))
+            .Returns(ReturnedUsers);
             var usersController = new UsersController(mockIUserRepository.Object, mockIMapper.Object);
             // Action call GetUsers() and expect and Ok status code with a JSON of all users 
             var result = await usersController.GetUsers();
-            // Check if actual is expected 
+            // Check if actual is expected: ok (users)
             Assert.IsInstanceOf<Microsoft.AspNetCore.Mvc.OkObjectResult>(result);
         }
+        // This function test GetUser(username) in Users Controller => return one user matches the input username
         [TestCase("john")]
         public async Task GetUserTest_ReturnOneUser(string username)
         {
@@ -42,11 +44,10 @@ namespace Fuel.API.UnitTest
             mockIUserRepository.Setup(user_repo => user_repo.GetUser(username)).
             ReturnsAsync(AuthControllerTest.GetUser(username, "password"));
             // Mapping virtual object when calling mapper
-            mockIMapper.Setup(_mapper => _mapper.Map<UserForDetailedDto>(AuthControllerTest.GetUser(username, "password")));
             var usersController = new UsersController(mockIUserRepository.Object,mockIMapper.Object);
             //Action: Call GetUser to get the user with the matching username and expect an ok status code from Users API Controller
             var response = await usersController.GetUser(username);
-            // Check if actual response is expected 
+            //Assert:  Check if actual response is expected: an ok object result Ok(user)
             Assert.IsInstanceOf<Microsoft.AspNetCore.Mvc.OkObjectResult>(response);
         }
         // Create a virtual users data for unit UsersController API method test purpose 
@@ -57,5 +58,15 @@ namespace Fuel.API.UnitTest
             IEnumerable<User> users = list_users;
             return users;
         }
+        private IEnumerable <UserForListDto> ReturnedUsers()
+        {
+            List<UserForListDto> list_users = new List<UserForListDto>();
+            var user_list = new UserForListDto() {
+                Username="peter"
+            };
+            list_users.Add(user_list);
+            return list_users;
+        }
+
     }
 }

@@ -1,5 +1,6 @@
 /*Controller the implementation of Auth Repository
 ================================================= */
+using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -66,7 +67,6 @@ namespace Fuel.API.Controllers
                 new Claim(ClaimTypes.NameIdentifier, userFromRepo.UserId.ToString()),
                 new Claim(ClaimTypes.Name, userFromRepo.Username)
             };
-
             //Token Key
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config.GetSection("AppSetting:Token").Value));
             //Create signing credentials 

@@ -24,7 +24,7 @@ namespace Fuel.API.UnitTest
             quoteForGenerationDto.DeliveryDate = Convert.ToDateTime(deliveryDate);
             // Action : calculate using the method 
             var expected = _repo.CalculatePrice(clientProfileTest, quoteForGenerationDto, hasQuoteBefore);
-            //Actual : compares the calculated suggested prices with the actual value. 
+            //Assert : compares the calculated suggested prices with the actual value. 
             Assert.AreEqual(actual,expected);
         }
         
