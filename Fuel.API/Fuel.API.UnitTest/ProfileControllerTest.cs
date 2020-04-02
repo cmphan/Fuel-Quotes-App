@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -14,6 +15,7 @@ using Moq;
 using NUnit.Framework;
 namespace Fuel.API.UnitTest
 {
+    [TestFixture]
     public class ProfileControllerTest
     {
         // This test the AddProfileForUser function in Profile Controller 
@@ -78,6 +80,36 @@ namespace Fuel.API.UnitTest
             //Assert: Expect A Bad Request ("Could not add the project") of type Bad Reqest Object Result 
             Assert.IsInstanceOf<Microsoft.AspNetCore.Mvc.BadRequestObjectResult>(response);
         }
+        [TestCase("tomnguyen")]
+        // This function test if quote is generated succesfully 
+        // Expected Ok(profile) Ok object result 
+        public async Task GenerateNewQuote_Success_ResponseOkWithObject(string username)
+        {
+            // Arrage: the form quote is completed 
+            Mock<IUserRepository> mockIUserRepository = new Mock<IUserRepository>();
+            Mock<IMapper>mockIMapper = new Mock<IMapper>();
+            Mock<IPhotoUploadService> mockICloudinary = new Mock<IPhotoUploadService>();
+            mockIUserRepository.Setup(user_repo => user_repo.GetUser(It.IsAny<string>()))
+            .Returns(Task.FromResult(new User(){
+                Username = username,
+                ClientProfile=GetClientProfile(),
+                Quote = GetQuote()
+            }));
+            var quoteForGeneration = new QuoteForDetailedDto(){
+                SuggestedPrice = 12,
+                AmountDue =12
+            };
+            mockIUserRepository.Setup(user_repo => user_repo.CalculatePrice(It.IsAny<User>(),
+            It.IsAny<QuoteForDetailedDto>())).Returns(12.00);
+            mockIMapper.Setup(_mapper => _mapper.Map<Quote>(It.IsAny<QuoteForDetailedDto>())).
+            Returns(new Quote() {Id=1});
+            mockIUserRepository.Setup(user_repo => user_repo.SaveAll()).Returns(Task.FromResult(true));
+            //Action: Call Generate Quote function
+            var profileController = new ProfileController(mockIUserRepository.Object,mockIMapper.Object,mockICloudinary.Object);
+            var response = await profileController.GenerateNewQuote(It.IsAny<string>(), quoteForGeneration);
+            //Assert: Check if it's OkObject Result 
+            Assert.IsInstanceOf<Microsoft.AspNetCore.Mvc.OkObjectResult>(response);
+        }
         private ClientProfile GetClientProfile() {
             return new ClientProfile() {
                 Fullname = "fullname",
@@ -89,6 +121,18 @@ namespace Fuel.API.UnitTest
                 State = "State",
                 Zipcode = "12345"
             };
+        }
+        public static ICollection<Quote> GetQuote() {
+            var quote = new List<Quote>();
+            var quote_1 = new Quote() {
+                Id = 1
+            };
+            var quote_2 = new Quote() {
+                Id =2
+            };
+            quote.Add(quote_1);
+            quote.Add(quote_2);
+            return quote;
         }
         private User GetUserWithProfile(string username) {
             var user = AuthControllerTest.GetUser(username, "password");

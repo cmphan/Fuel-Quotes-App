@@ -14,6 +14,6 @@ namespace Fuel.API.Data
          Task<IEnumerable<User>> GetUsers();
          Task<User> GetUser(string username);
          Task<ClientProfile> GetProfile(int id);
-         double CalculatePrice(ClientProfile userProfileFromRepo, QuoteForDetailedDto quoteForGenerationDto, bool hasQuoteBefore);
+         double CalculatePrice(User userFromRepo, QuoteForDetailedDto quoteForGenerationDto);
     }
 }

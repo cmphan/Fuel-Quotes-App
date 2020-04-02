@@ -35,7 +35,7 @@ Gallons Requested Factor = 2% if more than 1000 Gallons, 3% if less
 Company Profit Factor = 10% always
 Rate Fluctuation = 4% for summer, 3% otherwise 
 */
-        public double CalculatePrice(ClientProfile userProfileFromRepo, QuoteForDetailedDto quoteForGenerationDto, bool hasQuoteBefore)
+        public double CalculatePrice(User userFromRepo, QuoteForDetailedDto quoteForGenerationDto)
         {
             const double currentPricePerGallon = 1.5;
             double locationFactor = 0.04;
@@ -44,12 +44,14 @@ Rate Fluctuation = 4% for summer, 3% otherwise
             double fluctuationRate = 0.03;
             double companyProfit = 0.1;
             // Check Location Factor. If Texas = 0.02, out of state = 0.04 
-            if (userProfileFromRepo.State == "TX" || userProfileFromRepo.State == "Texas")
+            if (userFromRepo.ClientProfile.State == "TX" || userFromRepo.ClientProfile.State == "Texas")
             {
                 locationFactor = 0.02; 
             }
             // if user has quote before.
-            if (hasQuoteBefore)
+            // Check if user has any quote
+            if (userFromRepo.Quote.Any(q => q.User.UserId == userFromRepo.UserId))
+            // if(userFromRepo.Quote != null)
             {
                 rateHistory = 0.01;
             }
@@ -111,5 +113,6 @@ Rate Fluctuation = 4% for summer, 3% otherwise
         {
             return await _context.SaveChangesAsync() >0;
         }
+
     }
 }

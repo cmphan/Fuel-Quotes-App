@@ -124,17 +124,7 @@ namespace Fuel.API.Controllers
             // Fetch user from user table with username
             var userFromRepo = await _repo.GetUser(username);
             // Call business login function from user repository to calculate the suggested price
-            var userProfileFromRepo = userFromRepo.ClientProfile;
-            bool hasQuoteBefore;
-            // Check if user has any quote
-            if (userFromRepo.Quote.Any(q => q.User.UserId == userFromRepo.UserId)) 
-            {
-                hasQuoteBefore = true;
-            }
-            else {
-                hasQuoteBefore = false;
-            }
-            var suggestedPrice = _repo.CalculatePrice(userProfileFromRepo, quoteForGenerationDto, hasQuoteBefore);
+            var suggestedPrice = _repo.CalculatePrice(userFromRepo, quoteForGenerationDto);
             // Assign & Map all values back to database
             quoteForGenerationDto.SuggestedPrice = suggestedPrice;
             quoteForGenerationDto.AmountDue = suggestedPrice * quoteForGenerationDto.GallonsRequested;
