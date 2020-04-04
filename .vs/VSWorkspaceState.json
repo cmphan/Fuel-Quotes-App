@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Fuel.API",
+    "\\Fuel.API\\Controllers",
+    "\\Fuel.API\\Dtos",
+    "\\Fuel.API\\Models"
+  ],
+  "SelectedNode": "\\Fuel.API\\Controllers\\AuthController.cs",
+  "PreviewInSolutionExplorer": false
+}
