@@ -1,7 +1,6 @@
 /Users/cuongphan/Desktop/Spring 2020/COSC4353/Fuel-Quotes-App/Fuel-Quotes-App-Code/Fuel.API/bin/Debug/netcoreapp3.0/appsettings.Development.json
 /Users/cuongphan/Desktop/Spring 2020/COSC4353/Fuel-Quotes-App/Fuel-Quotes-App-Code/Fuel.API/bin/Debug/netcoreapp3.0/appsettings.json
 /Users/cuongphan/Desktop/Spring 2020/COSC4353/Fuel-Quotes-App/Fuel-Quotes-App-Code/Fuel.API/bin/Debug/netcoreapp3.0/Properties/launchSettings.json
-/Users/cuongphan/Desktop/Spring 2020/COSC4353/Fuel-Quotes-App/Fuel-Quotes-App-Code/Fuel.API/bin/Debug/netcoreapp3.0/Fuel.API
 /Users/cuongphan/Desktop/Spring 2020/COSC4353/Fuel-Quotes-App/Fuel-Quotes-App-Code/Fuel.API/bin/Debug/netcoreapp3.0/Fuel.API.deps.json
 /Users/cuongphan/Desktop/Spring 2020/COSC4353/Fuel-Quotes-App/Fuel-Quotes-App-Code/Fuel.API/bin/Debug/netcoreapp3.0/Fuel.API.runtimeconfig.json
 /Users/cuongphan/Desktop/Spring 2020/COSC4353/Fuel-Quotes-App/Fuel-Quotes-App-Code/Fuel.API/bin/Debug/netcoreapp3.0/Fuel.API.runtimeconfig.dev.json
@@ -291,3 +290,5 @@
 /Users/kimnguyen/Desktop/COSC 4353-SOFTWARE DESIGN/Project Fuel-Quote/Fuel.API/obj/Debug/netcoreapp3.0/Fuel.API.dll
 /Users/kimnguyen/Desktop/COSC 4353-SOFTWARE DESIGN/Project Fuel-Quote/Fuel.API/obj/Debug/netcoreapp3.0/Fuel.API.pdb
 /Users/kimnguyen/Desktop/COSC 4353-SOFTWARE DESIGN/Project Fuel-Quote/Fuel.API/obj/Debug/netcoreapp3.0/Fuel.API.genruntimeconfig.cache
+/Users/cuongphan/Desktop/Spring 2020/COSC4353/Fuel-Quotes-App/Fuel-Quotes-App-Code/Fuel.API/obj/Debug/netcoreapp3.0/Fuel.API.csproj.CoreCompileInputs.cache
+/Users/cuongphan/Desktop/Spring 2020/COSC4353/Fuel-Quotes-App/Fuel-Quotes-App-Code/Fuel.API/obj/Debug/netcoreapp3.0/Fuel.API.genruntimeconfig.cache
