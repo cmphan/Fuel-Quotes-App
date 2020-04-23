@@ -3616,11 +3616,12 @@
       ]
     },
     "System.ComponentModel.Primitives/4.3.0": {
-      "sha512": "KMVuoQ+8bMQ/Z59M3s64num5AD74X5YSqVc7ibwGkPTfmmkl2W8VuSxLRJtpw4KzQrSKUgR0BLbF0adPfcTSGQ==",
+      "sha512": "j8GUkCpM8V4d4vhLIIoBLGey2Z5bCkMVNjEZseyAlm4n5arcsJOeI3zkUP+zvZgzsbLTYh4lYeP/ZD/gdIAPrw==",
       "type": "package",
       "path": "system.componentmodel.primitives/4.3.0",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -3654,11 +3655,12 @@
       ]
     },
     "System.ComponentModel.TypeConverter/4.3.0": {
-      "sha512": "HZiP0DwTHJ+C+rdFqP47nBYUh5283kcwXIGY2zOVVhsJmVI/2tYiX2zNRdjRQRHsTox58Ydkec6h0pWSh8wAsw==",
+      "sha512": "16pQ6P+EdhcXzPiEK4kbA953Fu0MNG2ovxTZU81/qsCd1zPRsKc3uif5NgvllCY598k6bI0KUyKW8fanlfaDQg==",
       "type": "package",
       "path": "system.componentmodel.typeconverter/4.3.0",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -6067,23 +6069,19 @@
     ]
   },
   "packageFolders": {
-    "/Users/cuongphan/.nuget/packages/": {},
-    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
+    "/Users/kimnguyen/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/cuongphan/Desktop/Spring 2020/COSC4353/Fuel-Quotes-App/Fuel-Quotes-App-Code/Fuel.API/Fuel.API.csproj",
+      "projectUniqueName": "/Users/kimnguyen/Desktop/COSC 4353-SOFTWARE DESIGN/Project Fuel-Quote/Fuel.API/Fuel.API.csproj",
       "projectName": "Fuel.API",
-      "projectPath": "/Users/cuongphan/Desktop/Spring 2020/COSC4353/Fuel-Quotes-App/Fuel-Quotes-App-Code/Fuel.API/Fuel.API.csproj",
-      "packagesPath": "/Users/cuongphan/.nuget/packages/",
-      "outputPath": "/Users/cuongphan/Desktop/Spring 2020/COSC4353/Fuel-Quotes-App/Fuel-Quotes-App-Code/Fuel.API/obj/",
+      "projectPath": "/Users/kimnguyen/Desktop/COSC 4353-SOFTWARE DESIGN/Project Fuel-Quote/Fuel.API/Fuel.API.csproj",
+      "packagesPath": "/Users/kimnguyen/.nuget/packages/",
+      "outputPath": "/Users/kimnguyen/Desktop/COSC 4353-SOFTWARE DESIGN/Project Fuel-Quote/Fuel.API/obj/",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "/Users/cuongphan/.nuget/NuGet/NuGet.Config"
+        "/Users/kimnguyen/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.0"
@@ -6174,6 +6172,16 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[3.0.1, 3.0.1]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[3.0.0, 3.0.0]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -6182,7 +6190,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.0.102/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.201/RuntimeIdentifierGraph.json"
       }
     }
   }
