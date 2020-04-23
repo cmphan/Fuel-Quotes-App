@@ -138,6 +138,20 @@ namespace Fuel.API.Controllers
             }
             return BadRequest("Could not generate quote");
         }
+         [HttpPost("getPrice")]
+        public async Task<IActionResult> GetPrice(string username, [FromForm] QuoteForDetailedDto quoteForGenerationDto)
+        {
+            // Fetch user from user table with username
+            var userFromRepo = await _repo.GetUser(username);
+            // Call business login function from user repository to calculate the suggested price
+            var suggestedPrice = _repo.CalculatePrice(userFromRepo, quoteForGenerationDto);
+            // Assign & Map all values back to database
+            quoteForGenerationDto.SuggestedPrice = suggestedPrice;
+            quoteForGenerationDto.AmountDue = suggestedPrice * quoteForGenerationDto.GallonsRequested;
+            var newQuote = _mapper.Map<Quote>(quoteForGenerationDto);
+            // Save and return ok status &  the new quote if success
+            return Ok(new {newQuote.SuggestedPrice, newQuote.AmountDue});
+        }
 
     }
 }

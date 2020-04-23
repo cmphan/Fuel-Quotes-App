@@ -12,6 +12,7 @@ import {map} from 'rxjs/operators';
 export class UserService {
   profile: any;
   quote: any;
+  prices: any;
   baseURL = environment.apiURL;
   private profilePicURL = new Subject<string>();
   profilePicURL$ = this.profilePicURL.asObservable();
@@ -36,6 +37,17 @@ getQuote(username: string, model: any) {
       if (Object.keys(this.quote).length > 0) {
         localStorage.setItem('suggestedPrice', this.quote.suggestedPrice);
         localStorage.setItem('amountDue', this.quote.amountDue);
+      }
+    }));
+}
+getPrice(username: string, model: any) {
+  return this.http.post(this.baseURL + 'users/' + username + '/getPrice', model).
+  pipe (
+    map((response: any) => {
+      this.prices = response;
+      if (Object.keys(this.prices).length > 0) {
+        localStorage.setItem('suggestedPrice', this.prices.suggestedPrice);
+        localStorage.setItem('amountDue', this.prices.amountDue);
       }
     }));
 }
